@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% include _header_style_links %>
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+    user home
+
+    <h1>Student Id:</h1><h1 id="student_id"></h1>
+    <!-- <h1 id="nic"></h1>
+    <h1 id="phone_number"></h1> -->
+    <h1 id="email"></h1>
+    <!-- <img src="photo"  width="42" height="42"> -->
+    <!-- <h1 id="cv"></h1> -->
+    <!-- <h1 id="technical_skills"></h1> -->
+
+    <% include _script_links %>
+    <script>
+
+        var token = localStorage.getItem("token");
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${token}`,
+                dataType: "json",
+                success: function (data) {
+
+                    $("#student_id").text(data.student_id);
+                   // $("#nic").text(data.nic);
+                   // $("#phone_number").text(data.phone_number);
+                    $("#email").text(data.email);
+                    // $("#photo").text(data.photo);
+                    // ("#cv").text(data.cv);
+                    // ("#technical_skills").text(data.technical_skills);
+
+                    console.log(data);
+
+                },
+                error: function () {
+                    console.log("error from the method");
+                }
+            });
+
+        } else {
+            window.location.replace("/");
+        }
+    </script>
+
+</body>
+
+</html>

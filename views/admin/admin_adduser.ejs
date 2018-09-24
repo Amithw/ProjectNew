@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <% include _header_style_links %>
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+            <label for="student-id">Student ID</label>
+            <input type="text" class="form-control" id="student-id" placeholder="Enter ID" required>
+
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <div class="form-group" id="role">
+            <label for="role">Role</label><br>
+            <!-- <input type="text" class="form-control" id="role" placeholder="role" required> -->
+            <input type="radio" name="role" id="r1" value="student"> Student<br>
+            <input type="radio" name="role" id="r2" value="admin"> Admin<br>
+
+        </div>
+        <button type="button" class="btn btn-primary" id="adduser">Adduser</button>
+    </form>
+    <% include _script_links %>
+    <script>
+      
+       
+      
+        $("#adduser").click(function () {
+            var role_value;
+            var rates = document.getElementsByName('role');
+            rates.forEach(function(item){
+              if(item.checked){
+                role_value=item.value;
+              }
+            });
+            var username = $("#student-id").val();
+            var password = $("#password").val();
+            var role = role_value;
+
+            var adduser = {
+                student_id: username,
+                password: password,
+                role:role 
+            };
+
+            console.log(`${username} ${password} ${role}`);
+            $.ajax({
+                type: "POST",
+                url: "/admin/users",
+                dataType: "json",
+                data: adduser,
+                success: function (data) {
+
+                    // window.location.replace("/admin");
+                },
+                error: function () {
+                    console.log("error from the method");
+                    // window.location.replace("/login");
+                }
+            });
+        });
+
+
+
+    </script>
+
+
+</body>
+
+</html>

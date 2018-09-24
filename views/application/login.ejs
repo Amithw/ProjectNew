@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% include _header_style_links %>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <div class="form-group">
+                        <label for="student-id">Student ID</label>
+                        <input type="text" class="form-control" id="student-id" placeholder="Enter ID" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="login">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% include _script_links %>
+    <script>
+        $("#login").click(function () {
+            var username = $("#student-id").val();
+            var password = $("#password").val();
+            
+            
+           
+           var credentials = {
+                student_id: username,
+                password: password,
+                
+            };
+
+            console.log(`${username} ${password}`);
+
+
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                dataType: "json",
+                data: credentials,
+                success: function (data) {
+                    localStorage.setItem("token", data.token);
+                    console.log(data.role);
+                    if(data.role=="student"){
+                        window.location.replace("/users");
+                    }
+                    else if(data.role=="admin"){
+                        window.location.replace("/admin");
+                    }
+                  
+                },
+                error: function () {
+                    console.log("error from the method");
+                    window.location.replace("/login");
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
