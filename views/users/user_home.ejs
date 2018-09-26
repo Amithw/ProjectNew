@@ -10,11 +10,12 @@
 </head>
 
 <body>
-    
 
+    <button type="button" class="btn btn-primary" id="logout">Logout</button>
     user home
 
-    <h1>Student Id:</h1><h1 id="student_id"></h1>
+    <h1>Student Id:</h1>
+    <h1 id="student_id"></h1>
     <!-- <h1 id="nic"></h1>
     <h1 id="phone_number"></h1> -->
     <h1 id="email"></h1>
@@ -34,8 +35,8 @@
                 success: function (data) {
 
                     $("#student_id").text(data.student_id);
-                   // $("#nic").text(data.nic);
-                   // $("#phone_number").text(data.phone_number);
+                    // $("#nic").text(data.nic);
+                    // $("#phone_number").text(data.phone_number);
                     $("#email").text(data.email);
                     // $("#photo").text(data.photo);
                     // ("#cv").text(data.cv);
@@ -52,6 +53,12 @@
         } else {
             window.location.replace("/");
         }
+
+         $("#logout").click(function () {
+            localStorage.clear("token");
+            window.location.replace("login"); 
+         });
+
     </script>
 
 </body>
