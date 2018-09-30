@@ -7,23 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <% include _header_style_links %>
     <title>Document</title>
-</head>
 
 <body>
-
+    <a href="users/edit">Edit</a>
     <button type="button" class="btn btn-primary" id="logout">Logout</button>
     user home
 
     <h1>Student Id:</h1>
     <h1 id="student_id"></h1>
-    <!-- <h1 id="nic"></h1>
-    <h1 id="phone_number"></h1> -->
+     <h1 id="nic"></h1>
+    <!-- <h1 id="phone_number"></h1> -->
     <h1 id="email"></h1>
+    <h1 id="role"></h1>
     <!-- <img src="photo"  width="42" height="42"> -->
     <!-- <h1 id="cv"></h1> -->
     <!-- <h1 id="technical_skills"></h1> -->
 
     <% include _script_links %>
+ 
     <script>
 
         var token = localStorage.getItem("token");
@@ -35,13 +36,13 @@
                 success: function (data) {
 
                     $("#student_id").text(data.student_id);
-                    // $("#nic").text(data.nic);
+                     $("#nic").text(data.nic);
                     // $("#phone_number").text(data.phone_number);
                     $("#email").text(data.email);
-                    // $("#photo").text(data.photo);
+                    // $("#photo").src(data.photo);
                     // ("#cv").text(data.cv);
                     // ("#technical_skills").text(data.technical_skills);
-
+                    $("#role").text(data.role);
                     console.log(data);
 
                 },
@@ -54,10 +55,11 @@
             window.location.replace("/");
         }
 
-         $("#logout").click(function () {
+        $("#logout").click(function () {
             localStorage.clear("token");
-            window.location.replace("login"); 
-         });
+            window.location.replace("login");
+        });
+
 
     </script>
 

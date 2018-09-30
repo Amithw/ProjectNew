@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <% include _header_style_links %>
+    <script>
+    
+    </script>
 </head>
 
 <body>
@@ -31,16 +34,42 @@
     </form>
     <% include _script_links %>
     <script>
-      
-       
-      
+
+        var token = localStorage.getItem("token");
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${token}`,
+                dataType: "json",
+                success: function (data) {
+
+                    // $("#student_id").text(data.student_id);
+                    // $("#nic").text(data.nic);
+                    // $("#phone_number").text(data.phone_number);
+                    // $("#email").text(data.email);
+                    // $("#photo").src(data.photo);
+                    // ("#cv").text(data.cv);
+                    // ("#technical_skills").text(data.technical_skills);
+
+                    console.log(data);
+
+                },
+                error: function () {
+                    console.log("error from the method");
+                }
+            });
+
+        } else {
+            window.location.replace("/");
+        }
+
         $("#adduser").click(function () {
             var role_value;
             var rates = document.getElementsByName('role');
-            rates.forEach(function(item){
-              if(item.checked){
-                role_value=item.value;
-              }
+            rates.forEach(function (item) {
+                if (item.checked) {
+                    role_value = item.value;
+                }
             });
             var username = $("#student-id").val();
             var password = $("#password").val();
@@ -49,7 +78,7 @@
             var adduser = {
                 student_id: username,
                 password: password,
-                role:role 
+                role: role
             };
 
             console.log(`${username} ${password} ${role}`);

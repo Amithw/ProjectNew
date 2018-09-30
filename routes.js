@@ -20,9 +20,11 @@ router.post("/admin/users",adminController.addUser);
 
 //routes for user
 router.get("/users", userController.displayHome);
-router.get("/users/:id",userController.getUser);
 router.post("/login",userController.authenticate);
-    
+router.get("/users/edit",userController.edit); 
+router.get("/users/:id",userController.getUser);
+router.put("/users/:id",userController.userUpdate); 
+ 
 
 //routes for organizations
 router.get("/organizations", organizationController.displayHome);
