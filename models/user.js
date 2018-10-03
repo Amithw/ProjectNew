@@ -3,17 +3,18 @@ const bcrypt = require("bcrypt");
 const SALT_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
-    student_id: { type: String, required: true, unique:true },
+    student_id: { type: String, required: true, unique: true },
+    name: { type: String },
     password: { type: String, required: true, min: 5 },
-    role: {type: String},
-     nic:{ type: String },
-    // phone_number: { type: Number },
-    //  email: { type: String }
-    // photo: {type: String },
-    // cv: {type: String},
-    // technical_skills: { type: [String] },
-    
-    
+    role: { type: String },
+    nic: { type: String },
+    phone_number: { type: Number },
+    email: { type: String },
+    //photo: { type: String },
+    cv: { type: String },
+    technical_skills: { type: [String] }
+
+
 });
 
 

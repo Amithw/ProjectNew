@@ -1,4 +1,5 @@
-
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 // display the home of the application
 appHome = function (req, res, next) {
     res.render("index")
@@ -12,9 +13,17 @@ pageNotFound = function (req, res, next) {
 
 module.exports.pageNotFound = pageNotFound;
 
-login=function(req,res,next){
+login = function (req, res, next) {
     res.status(200).render("login");
 }
 
-module.exports.login=login;
+module.exports.login = login;
 
+userAuthentication = function (req, res, next) {
+    
+    next();
+}
+
+
+
+module.exports.userAuthentication = userAuthentication;

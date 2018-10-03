@@ -4,8 +4,7 @@ const SECRET_KEY = "sathira";
 // function for displaying  home
 
 displayHome = function (req, res, next) {
-    var userData = req.body;
-    console.log(userData);   
+   
     res.render("user_home");
 }
 

@@ -19,7 +19,7 @@ router.post("/admin/users",adminController.addUser);
 
 
 //routes for user
-router.get("/users", userController.displayHome);
+router.get("/users",appController.userAuthentication,userController.displayHome);
 router.post("/login",userController.authenticate);
 router.get("/users/edit",userController.edit); 
 router.get("/users/:id",userController.getUser);
