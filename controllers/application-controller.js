@@ -20,7 +20,7 @@ login = function (req, res, next) {
 module.exports.login = login;
 
 userAuthentication = function (req, res, next) {
-    
+
     next();
 }
 
