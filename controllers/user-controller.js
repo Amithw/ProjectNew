@@ -52,7 +52,7 @@ getUser = function (req, res, next) {
     var id = req.params.id;
     jwt.verify(id, SECRET_KEY, function (err, decode) {
         console.log(decode);
-        User.findById(decode.id, { student_id: 1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, user) {
+        User.findById(decode.id, { student_id: 1,name:1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, user) {
             if (err) {
                 res.status(400);
                 res.send({ error: "no user can be found" });
@@ -77,8 +77,9 @@ edit = function (req, res, next) {
 module.exports.edit = edit;
 
 userUpdate = function (req, res, next) {
+    var id = req.params.id;
     var studentData = req.body;
-    var studentId = req.params.id;
+    
     console.log(req.body);
     User.findOneAndUpdate({ _id: id }, studentData, function (err, user) {
         if (err) {
@@ -86,8 +87,9 @@ userUpdate = function (req, res, next) {
             res.send({ errors: "Error occured when updating the student." });
         }
         if (user) {
-            res.status(200);
-            Student.findOne({ _id: id }).then(function (user) {
+            
+            User.findOne({ _id: id }).then(function (user) {
+                res.status(200);
                 res.send(user);
             });
             

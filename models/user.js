@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     phone_number: { type: Number },
     email: { type: String },
     //photo: { type: String },
-    cv: { type: String },
+    //cv: { type: String },
     technical_skills: { type: [String] }
 
 

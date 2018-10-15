@@ -8,7 +8,7 @@
     <title>Document</title>
     <% include _header_style_links %>
     <script>
-    
+
     </script>
 </head>
 
@@ -30,6 +30,21 @@
             <input type="radio" name="role" id="r2" value="admin"> Admin<br>
 
         </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" value="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="nic" value="NIC" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="email" value="E-mail" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="phone_number" value="Phone number" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="technical_skills" value="Technical Skills" required>
+        </div>
         <button type="button" class="btn btn-primary" id="adduser">Adduser</button>
     </form>
     <% include _script_links %>
@@ -43,13 +58,14 @@
                 dataType: "json",
                 success: function (data) {
 
-                    // $("#student_id").text(data.student_id);
-                    // $("#nic").text(data.nic);
-                    // $("#phone_number").text(data.phone_number);
-                    // $("#email").text(data.email);
+                    $("#student_id").text(data.student_id);
+                    $("#name").text(data.name);
+                    $("#nic").text(data.nic);
+                    $("#phone_number").text(data.phone_number);
+                    $("#email").text(data.email);
                     // $("#photo").src(data.photo);
                     // ("#cv").text(data.cv);
-                    // ("#technical_skills").text(data.technical_skills);
+                    $("#technical_skills").text(data.technical_skills);
 
                     console.log(data);
 
@@ -71,17 +87,19 @@
                     role_value = item.value;
                 }
             });
-            var username = $("#student-id").val();
+            var studentid = $("#student-id").val();
             var password = $("#password").val();
             var role = role_value;
+            var name = $("#name").val();
 
             var adduser = {
-                student_id: username,
+                student_id: studentid,
                 password: password,
-                role: role
+                role: role,
+                name: name
             };
 
-            console.log(`${username} ${password} ${role}`);
+            console.log(`${studentid} ${password} ${role}`);
             $.ajax({
                 type: "POST",
                 url: "/admin/users",
@@ -89,11 +107,11 @@
                 data: adduser,
                 success: function (data) {
 
-                    // window.location.replace("/admin");
+                    window.location.replace("/admin");
                 },
                 error: function () {
                     console.log("error from the method");
-                    // window.location.replace("/login");
+                    window.location.replace("/login");
                 }
             });
         });
