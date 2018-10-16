@@ -16,7 +16,8 @@ router.get("/login",appController.login);
 router.get("/admin", adminController.displayHome);
 router.get("/admin/user",adminController.user);
 router.post("/admin/users",adminController.addUser);
-
+router.get("/admin/edit",adminController.edit); 
+router.put("/admin/:id",adminController.userUpdate); 
 
 //routes for user
 router.get("/users",appController.userAuthentication,userController.displayHome);

@@ -2,7 +2,7 @@
 <h1>wel come</h1>
 
 <a href="./admin/user">Add User</a>
-<!-- <a href="">add user</a> -->
+<a href="./admin/edit">Edit</a>
 
 <button type="button" class="btn btn-primary" id="logout">Logout</button>
 
@@ -30,12 +30,12 @@ user home
             success: function (data) {
 
                 $("#student_id").text(data.student_id);
-                // $("#nic").text(data.nic);
-                // $("#phone_number").text(data.phone_number);
+                $("#nic").text(data.nic);
+                $("#phone_number").text(data.phone_number);
                 $("#email").text(data.email);
                 // $("#photo").src(data.photo);
                 // ("#cv").text(data.cv);
-                // ("#technical_skills").text(data.technical_skills);
+                $("#technical_skills").text(data.technical_skills);
 
                 console.log(data);
 

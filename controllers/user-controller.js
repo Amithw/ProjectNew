@@ -85,13 +85,13 @@ userUpdate = function (req, res, next) {
         if (err) {
             res.status(400);
             res.send({ errors: "Error occured when updating the student." });
-            console.log("hello1");
+            console.log("Error occured when updating the student.");
         }
         if (user) {
             
                 res.status(200);
                 res.send(user);
-                console.log("hello2");
+                console.log("update successful");
             
         }
     });

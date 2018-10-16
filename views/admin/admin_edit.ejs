@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <% include _header_style_links %>
+</head>
+
+<body>
+<form >
+
+        <div class="form-group" >
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+                <label for="nic">NIC</label>
+                <input type="text" class="form-control" id="nic" placeholder="NIC" required>
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
+                <label for="technical_skills">Technical Skills</label>
+                <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
+
+    
+            </div>
+
+            <button type="button" class="btn btn-primary" id="userUpdate">submit</button>
+</form>
+
+
+    <% include _script_links %>
+    <script>
+
+        var token = localStorage.getItem("token");
+        var id;
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${token}`,
+                dataType: "json",
+                success: function (data) {
+
+                    $("#student_id").text(data.student_id);
+                    $("#name").text(data.name);
+                    $("#nic").text(data.nic);
+                    $("#phone_number").text(data.phone_number);
+                    $("#email").text(data.email);
+                    // $("#photo").src(data.photo);
+                    // ("#cv").text(data.cv);
+                    $("#technical_skills").text(data.technical_skills);
+
+                    console.log(data);
+                    id = data._id;
+
+                },
+                error: function () {
+                    console.log("error from the method");
+                }
+            });
+
+        } else {
+            window.location.replace("/");
+        }
+
+        $("#userUpdate").click(function () {
+     
+            var name = $("#name").val();
+            var nic = $("#nic").val();
+            var phone_number = $("#phone_number").val();
+            var email = $("#email").val();
+            var technical_skills = $("#technical_skills").val();
+
+            var userUpdate = {
+                name: name,
+                technical_skills: technical_skills,
+                email: email,
+                phone_number: phone_number,
+                nic: nic
+                
+            };
+
+            console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic}`);
+            $.ajax({
+                type: "put",
+                url: `/users/${id}`,
+                dataType: "json",
+                data: userUpdate,
+                success: function (data) {
+
+                    window.location.replace("/admin");
+                },
+                error: function () {
+                    console.log("error from the method");
+                    window.location.replace("/login");
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

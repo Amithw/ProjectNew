@@ -32,3 +32,31 @@ user = function (req, res, next) {
     res.render("admin_adduser");
 }
 module.exports.user = user;
+
+edit = function (req, res, next) {
+    res.render("admin_edit");
+}
+module.exports.edit = edit;
+
+userUpdate = function (req, res, next) {
+    var id = req.params.id;
+    var studentData = req.body;
+    
+    console.log(req.params.id);
+    User.findOneAndUpdate({ _id: id }, studentData, {new:true} ,function (err,user) {
+        if (err) {
+            res.status(400);
+            res.send({ errors: "Error occured when updating the student." });
+            console.log("Error occured when updating the student.");
+        }
+        if (user) {
+            
+                res.status(200);
+                res.send(user);
+                console.log("update successful");
+            
+        }
+    });
+}
+
+module.exports.userUpdate = userUpdate;
