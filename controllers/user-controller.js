@@ -80,18 +80,18 @@ userUpdate = function (req, res, next) {
     var id = req.params.id;
     var studentData = req.body;
     
-    console.log(req.body);
-    User.findOneAndUpdate({ _id: id }, studentData, function (err, user) {
+    console.log(req.params.id);
+    User.findOneAndUpdate({ _id: id }, studentData, {new:true} ,function (err,user) {
         if (err) {
             res.status(400);
             res.send({ errors: "Error occured when updating the student." });
+            console.log("hello1");
         }
         if (user) {
             
-            User.findOne({ _id: id }).then(function (user) {
                 res.status(200);
                 res.send(user);
-            });
+                console.log("hello2");
             
         }
     });

@@ -36,12 +36,12 @@
                 success: function (data) {
 
                     $("#student_id").text(data.student_id);
-                    // $("#nic").text(data.nic);
-                    // $("#phone_number").text(data.phone_number);
+                    $("#nic").text(data.nic);
+                    $("#phone_number").text(data.phone_number);
                     $("#name").text(data.name);
                     // $("#photo").src(data.photo);
                     // $("#cv").text(data.cv);
-                    // $("#technical_skills").text(data.technical_skills);
+                    $("#technical_skills").text(data.technical_skills);
                     $("#role").text(data.role);
                     console.log(data);
 

@@ -30,21 +30,7 @@
             <input type="radio" name="role" id="r2" value="admin"> Admin<br>
 
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="name" value="Full Name" required>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="nic" value="NIC" required>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="email" value="E-mail" required>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="phone_number" value="Phone number" required>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="technical_skills" value="Technical Skills" required>
-        </div>
+
         <button type="button" class="btn btn-primary" id="adduser">Adduser</button>
     </form>
     <% include _script_links %>
@@ -90,13 +76,13 @@
             var studentid = $("#student-id").val();
             var password = $("#password").val();
             var role = role_value;
-            var name = $("#name").val();
+            //var name = $("#name").val();
 
             var adduser = {
                 student_id: studentid,
                 password: password,
-                role: role,
-                name: name
+                role: role
+               // name: name
             };
 
             console.log(`${studentid} ${password} ${role}`);
