@@ -6,8 +6,8 @@ const mongoose =require("mongoose");
 const db=require("./config/db");
 const app = express();
 const config = require("./config/config.json")[app.get("env")];
-
-
+const multer = require('multer');
+const upload = multer({dest: './uploads'});
 
 db.connect(config.mongourl);
 

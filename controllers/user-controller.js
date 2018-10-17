@@ -81,6 +81,13 @@ userUpdate = function (req, res, next) {
     var studentData = req.body;
     
     console.log(req.params.id);
+    if(req.file){
+        console.log('Uploading File...');
+        var photo = req.file.filename;
+    } else {
+        console.log('No File Uploaded...');
+        var photo = 'noimage.jpg';
+    }
     User.findOneAndUpdate({ _id: id }, studentData, {new:true} ,function (err,user) {
         if (err) {
             res.status(400);

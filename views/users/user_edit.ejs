@@ -10,98 +10,101 @@
 </head>
 
 <body>
-<form >
+    <form>
 
-        <div class="form-group" >
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-                <label for="nic">NIC</label>
-                <input type="text" class="form-control" id="nic" placeholder="NIC" required>
-                <label for="email">E-Mail</label>
-                <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-                <label for="phone">Phone Number</label>
-                <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-                <label for="technical_skills">Technical Skills</label>
-                <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+            <label for="nic">NIC</label>
+            <input type="text" class="form-control" id="nic" placeholder="NIC" required>
+            <label for="email">E-Mail</label>
+            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+            <label for="phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
+            <label for="technical_skills">Technical Skills</label>
+            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
+            <label for="image">image</label>
+            <input type="file" class="form-control" name="photo" id="photo" placeholder="Your Photo" required>
 
-    
-            </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary" id="userUpdate">submit</button>
-</form>
+        <button type="submit" class="btn btn-primary" id="userUpdate">submit</button>
+    </form>
 
 
     <% include _script_links %>
-    <script>
+        <script>
 
-        var token = localStorage.getItem("token");
-        var id;
-        if (!!token) {
-            $.ajax({
-                type: "GET",
-                url: `/users/${token}`,
-                dataType: "json",
-                success: function (data) {
+            var token = localStorage.getItem("token");
+            var id;
+            if (!!token) {
+                $.ajax({
+                    type: "GET",
+                    url: `/users/${token}`,
+                    dataType: "json",
+                    success: function (data) {
 
-                    $("#student_id").text(data.student_id);
-                    $("#name").text(data.name);
-                    $("#nic").text(data.nic);
-                    $("#phone_number").text(data.phone_number);
-                    $("#email").text(data.email);
-                    // $("#photo").src(data.photo);
-                    // ("#cv").text(data.cv);
-                    $("#technical_skills").text(data.technical_skills);
+                        $("#student_id").text(data.student_id);
+                        $("#name").text(data.name);
+                        $("#nic").text(data.nic);
+                        $("#phone_number").text(data.phone_number);
+                        $("#email").text(data.email);
+                        $("#photo").appendTo(data.photo);
+                        // $("#cv").text(data.cv);
+                        $("#technical_skills").text(data.technical_skills);
 
-                    console.log(data);
-                    id = data._id;
+                        console.log(data);
+                        id = data._id;
 
-                },
-                error: function () {
-                    console.log("error from the method");
-                }
+                    },
+                    error: function () {
+                        console.log("error from the method");
+                    }
+                });
+
+            } else {
+                window.location.replace("/");
+            }
+
+            $("#userUpdate").click(function () {
+
+                var name = $("#name").val();
+                var nic = $("#nic").val();
+                var phone_number = $("#phone_number").val();
+                var email = $("#email").val();
+                var technical_skills = $("#technical_skills").val();
+                var photo = $("#photo").val();
+
+                var userUpdate = {
+                    name: name,
+                    technical_skills: technical_skills,
+                    email: email,
+                    phone_number: phone_number,
+                    nic: nic,
+                    photo: photo
+
+                };
+
+                console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic} ${photo}`);
+                $.ajax({
+                    type: "put",
+                    url: `/users/${id}`,
+                    dataType: "json",
+                    data: userUpdate,
+                    success: function (data) {
+
+                        window.location.replace("/users");
+                    },
+                    error: function () {
+                        console.log("error from the method");
+                        window.location.replace("/login");
+                    }
+                });
             });
 
-        } else {
-            window.location.replace("/");
-        }
-
-        $("#userUpdate").click(function () {
-     
-            var name = $("#name").val();
-            var nic = $("#nic").val();
-            var phone_number = $("#phone_number").val();
-            var email = $("#email").val();
-            var technical_skills = $("#technical_skills").val();
-
-            var userUpdate = {
-                name: name,
-                technical_skills: technical_skills,
-                email: email,
-                phone_number: phone_number,
-                nic: nic
-                
-            };
-
-            console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic}`);
-            $.ajax({
-                type: "put",
-                url: `/users/${id}`,
-                dataType: "json",
-                data: userUpdate,
-                success: function (data) {
-
-                    window.location.replace("/users");
-                },
-                error: function () {
-                    console.log("error from the method");
-                    window.location.replace("/login");
-                }
-            });
-        });
 
 
-
-    </script>
+        </script>
 </body>
 
 </html>

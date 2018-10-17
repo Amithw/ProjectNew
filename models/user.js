@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     nic: { type: String },
     phone_number: { type: Number },
     email: { type: String },
-    //photo: { type: String },
+    photo: { type: String },
     //cv: { type: String },
     technical_skills: { type: [String] }
 
