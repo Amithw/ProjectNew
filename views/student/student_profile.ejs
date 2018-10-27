@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OAuth Tutorials</title>
+</head>
+
+<body>
+    <img src="<%= user.thumbnail %>" />
+    <nav>
+        <ul>
+            <li><a href="/student/logout">Logout</a></li>
+
+            <li><a href="/student/home">Homepage</a></li>
+        </ul>
+    </nav>
+
+    <h1>Wel come to your profile,
+        <%= user.username %>
+    </h1>
+
+    <a href="/student/edit">Authorization</a> 
+</body> </html>

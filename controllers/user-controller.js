@@ -10,6 +10,8 @@ displayHome = function (req, res, next) {
 
 module.exports.displayHome = displayHome;
 
+
+
 authenticate = function (req, res, next) {
     var userData = req.body;
     console.log(userData);
@@ -71,23 +73,47 @@ getUser = function (req, res, next) {
 
 module.exports.getUser = getUser;
 
+getUsers = function (req, res, next) {
+
+    User.find({}, function(err, data) {
+        // note that data is an array of objects, not a single object!
+        res.render('user_all', {
+            user : req.user,
+            practices: data
+        });
+    });
+
+    // User.find({}, { student_id: 1,name:1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, users) {
+    //     if (err) {
+    //         res.status(500);
+    //         res.send({ errors: "internal serve error" });
+    //     }
+    //     if (users) {
+    //         res.status(200);
+    //         res.send({ users });
+    //     }
+    // });
+}
+module.exports.getUsers = getUsers;
+
 edit = function (req, res, next) {
     res.render("user_edit");
 }
 module.exports.edit = edit;
 
+
 userUpdate = function (req, res, next) {
     var id = req.params.id;
     var studentData = req.body;
     
-    console.log(req.params.id);
-    if(req.file){
-        console.log('Uploading File...');
-        var photo = req.file.filename;
-    } else {
-        console.log('No File Uploaded...');
-        var photo = 'noimage.jpg';
-    }
+    // console.log(req.params.id);
+    // if(req.file){
+    //     console.log('Uploading File...');
+    //     var photo = req.file.filename;
+    // } else {
+    //     console.log('No File Uploaded...');
+    //     var photo = 'noimage.jpg';
+    // }
     User.findOneAndUpdate({ _id: id }, studentData, {new:true} ,function (err,user) {
         if (err) {
             res.status(400);
@@ -105,3 +131,6 @@ userUpdate = function (req, res, next) {
 }
 
 module.exports.userUpdate = userUpdate;
+
+
+

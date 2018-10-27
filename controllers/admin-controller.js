@@ -6,6 +6,21 @@ displayHome = function (req, res, next) {
     res.render("admin_home");
 }
 
+getUsers = function (req, res, next) {
+
+    User.find({}, { student_id: 1,name:1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, users) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "internal serve error" });
+        }
+        if (users) {
+            res.status(200);
+            res.send({ users });
+        }
+    });
+}
+module.exports.getUsers = getUsers;
+
 module.exports.displayHome = displayHome;
 
 addUser = function (req, res, next) {

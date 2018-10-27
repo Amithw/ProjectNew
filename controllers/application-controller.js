@@ -27,3 +27,9 @@ userAuthentication = function (req, res, next) {
 
 
 module.exports.userAuthentication = userAuthentication;
+
+studentLogin = function (req, res, next) {
+    res.status(200).render("../student/student_login");
+}
+
+module.exports.studentLogin = studentLogin;

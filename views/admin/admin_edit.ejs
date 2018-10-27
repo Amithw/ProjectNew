@@ -10,25 +10,25 @@
 </head>
 
 <body>
-<form >
+    <form>
 
-        <div class="form-group" >
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-                <label for="nic">NIC</label>
-                <input type="text" class="form-control" id="nic" placeholder="NIC" required>
-                <label for="email">E-Mail</label>
-                <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-                <label for="phone">Phone Number</label>
-                <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-                <label for="technical_skills">Technical Skills</label>
-                <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+            <label for="nic">NIC</label>
+            <input type="text" class="form-control" id="nic" placeholder="NIC" required>
+            <label for="email">E-Mail</label>
+            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+            <label for="phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
+            <label for="technical_skills">Technical Skills</label>
+            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
 
-    
-            </div>
 
-            <button type="button" class="btn btn-primary" id="userUpdate">submit</button>
-</form>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="userUpdate">submit</button>
+    </form>
 
 
     <% include _script_links %>
@@ -66,7 +66,7 @@
         }
 
         $("#userUpdate").click(function () {
-     
+
             var name = $("#name").val();
             var nic = $("#nic").val();
             var phone_number = $("#phone_number").val();
@@ -79,7 +79,7 @@
                 email: email,
                 phone_number: phone_number,
                 nic: nic
-                
+
             };
 
             console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic}`);
