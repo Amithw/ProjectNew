@@ -32,12 +32,16 @@ passport.use(
                 //if not, create user in our db
                 new User({
                     // email:email._raw.emails,
+                    email_address: email.emails[0],
                     username: email.displayName,
                     googleId: email.id,
                     thumbnail: email._json.image.url
+
+                   
                 }).save().then(function (newUser) {
                     console.log('new user created:' + newUser);
                     done(null, newUser);
+                    
                 });
             }
 

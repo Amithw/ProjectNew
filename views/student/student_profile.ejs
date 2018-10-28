@@ -22,5 +22,7 @@
         <%= user.username %>
     </h1>
 
-    <a href="/student/edit">Authorization</a> 
+    <a href="/student/edit/<%= user.id %>">Edit Profile</a> 
+
+    <%= user.email_address.value %>
 </body> </html>

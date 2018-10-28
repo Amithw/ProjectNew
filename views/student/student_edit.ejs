@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="<%= user.thumbnail %>" />
+    <form method="POST" action="/student_edit/<%= user.id %>">
+
+        <div class="form-group">
+            <input type="hidden" value="<%= user.id %>" id ="id" />
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" id="f_name" value="<%= user.f_name %>" placeholder="First Name" required>
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" id="l_name" placeholder="Last Name" required>
+            <label for="nic">NIC</label>
+            <input type="text" class="form-control" id="nic" placeholder="NIC" required>
+            <label for="email">E-Mail</label>
+            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+            <label for="phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
+            <label for="technical_skills">Technical Skills</label>
+            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
+            <label for="cv">CV</label>
+            <input type="text" class="form-control" id="cv" placeholder="CV link" required>
+           
+
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="studentUpdate">submit</button>
+    </form>
+
+</body>
+</html>
