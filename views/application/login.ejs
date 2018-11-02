@@ -53,8 +53,8 @@
                 success: function (data) {
                     localStorage.setItem("token", data.token);
                     console.log(data.role);
-                    if(data.role=="student"){
-                        window.location.replace("/users");
+                    if(data.role=="organization"){
+                        window.location.replace("/organizations");
                     }
                     else if(data.role=="admin"){
                         window.location.replace("/admin");

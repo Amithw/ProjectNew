@@ -6,6 +6,8 @@ displayHome = function (req, res, next) {
     res.render("admin_home");
 }
 
+module.exports.displayHome = displayHome;
+
 getUsers = function (req, res, next) {
 
     User.find({}, function(err, data) {
@@ -30,7 +32,7 @@ getUsers = function (req, res, next) {
 // }
 module.exports.getUsers = getUsers;
 
-module.exports.displayHome = displayHome;
+
 
 addUser = function (req, res, next) {
     console.log(req.body);

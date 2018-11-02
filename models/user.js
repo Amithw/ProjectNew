@@ -51,7 +51,7 @@ userSchema.methods.checkPassword = function (password, done) {
     });
 }
 
-module.exports = mongoose.model("Student", userSchema);
+module.exports = mongoose.model("Organization", userSchema);
 
 
 
