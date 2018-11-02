@@ -105,6 +105,7 @@ module.exports.edit = edit;
 userUpdate = function (req, res, next) {
     var id = req.params.id;
     var studentData = req.body;
+    console.log("sasas");
     
     // console.log(req.params.id);
     // if(req.file){

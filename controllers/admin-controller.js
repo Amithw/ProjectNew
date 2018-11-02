@@ -8,17 +8,26 @@ displayHome = function (req, res, next) {
 
 getUsers = function (req, res, next) {
 
-    User.find({}, { student_id: 1,name:1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, users) {
-        if (err) {
-            res.status(500);
-            res.send({ errors: "internal serve error" });
-        }
-        if (users) {
-            res.status(200);
-            res.send({ users });
-        }
+    User.find({}, function(err, data) {
+        // note that data is an array of objects, not a single object!
+        res.render('admin_view_all', {
+            user : req.user,
+            practices: data
+        });
     });
 }
+
+//     User.find({}, { student_id: 1,name:1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, users) {
+//         if (err) {
+//             res.status(500);
+//             res.send({ errors: "internal serve error" });
+//         }
+//         if (users) {
+//             res.status(200);
+//             res.send({ users });
+//         }
+//     });
+// }
 module.exports.getUsers = getUsers;
 
 module.exports.displayHome = displayHome;

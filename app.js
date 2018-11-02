@@ -4,7 +4,7 @@ const path = require("path");
 const routes = require("./routes");
 const mongoose =require("mongoose");
 const db=require("./config/db");
-
+var flash = require("connect-flash");   
 const multer = require('multer');
 const passportSetup = require('./config/passport-setup');
 const keys = require('./config/keys');
@@ -13,9 +13,9 @@ const passport = require('passport');
 const session = require('express-session');
 
 const app = express();
-const config = require("./config/config.json")[app.get("env")];
+//const config = require("./config/config.json")[app.get("env")];
 
-db.connect(config.mongourl);
+db.connect(keys.mongodb.dbURI);
 
 app.set("views",[
     path.resolve(path.join(__dirname,"views"),"application"),
@@ -38,6 +38,7 @@ app.use(CookieSession({
 }));
 
 // initialize passport
+app.use(flash());   
 app.use(passport.initialize());
 app.use(passport.session());
 

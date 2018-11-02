@@ -1,37 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<% include _header_style_links %>
+
 <body>
+
     <img src="<%= user.thumbnail %>" />
-    <form method="POST" action="/student_edit/<%= user.id %>">
+    <form>
+
+
 
         <div class="form-group">
-            <input type="hidden" value="<%= user.id %>" id ="id" />
+            <input type="hidden" value="<%= user.id %>" id="id" />
             <label for="first_name">First Name</label>
-            <input type="text" class="form-control" id="f_name" value="<%= user.f_name %>" placeholder="First Name" required>
+            <input type="text" class="form-control" id="f_name" name="f_name" value="<%= user.f_name %>" placeholder="First Name"
+                required>
             <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="l_name" placeholder="Last Name" required>
-            <label for="nic">NIC</label>
-            <input type="text" class="form-control" id="nic" placeholder="NIC" required>
-            <label for="email">E-Mail</label>
-            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-            <label for="phone">Phone Number</label>
-            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-            <label for="technical_skills">Technical Skills</label>
-            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
-            <label for="cv">CV</label>
-            <input type="text" class="form-control" id="cv" placeholder="CV link" required>
-           
+            <input type="text" class="form-control" id="l_name" placeholder="Last Name" value="<%= user.l_name %>"
+                required>
 
+            <label for="university">University </label>
+            <input type="text" class="form-control" id="university" placeholder="university" value="<%= user.university %>"
+                required>
+            <label for="phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" value="<%= user.phone_number %>"
+                required>
+            <label for="technical_skills">Technical Skills</label>
+            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" value="<%= user.technical_skills %>"
+                required>
+            <label for="cv">CV</label>
+            <input type="text" class="form-control" id="cv" placeholder="CV link" value="<%= user.cv %>" required>
+
+            <label for="status">Career Availability</label><br>
+            <!-- <input type="text" class="form-control" id="role" placeholder="role" required> -->
+            <input type="radio" name="status" id="r1" value="Availabal"> Availabal<br>
+            <input type="radio" name="status" id="r2" value="Hired"> Hired<br>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="studentUpdate">submit</button>
+        <input type="button" class="btn btn-primary" id="studentUpdate" value="submit">
     </form>
 
+
+
+    <% include _script_links %>
+    <script>
+        $("#studentUpdate").click(function () {
+
+            var status_value;
+            var rates = document.getElementsByName('status');
+            rates.forEach(function (item) {
+                if (item.checked) {
+                    status_value = item.value;
+                }
+            });
+
+
+            var status = status_value;
+            var id = $("#id").val();
+            var f_name = $("#f_name").val();
+            var l_name = $("#l_name").val();
+            var phone_number = $("#phone_number").val();
+            var technical_skills = $("#technical_skills").val();
+            var cv = $("#cv").val();
+            var university = $("#university").val();
+
+
+            var studentUpdate = {
+                id: id,
+                f_name: f_name,
+                l_name: l_name,
+                phone_number: phone_number,
+                technical_skills: technical_skills,
+                cv: cv,
+                university: university,
+                status: status
+
+
+            };
+
+
+            console.log(`${f_name} ${id} ${university} `);
+
+            $.ajax({
+                type: "POST",
+                url: `/student_edit/${id}`,
+                dataType: "json",
+                data: studentUpdate,
+                success: function (data) {
+
+                    console.log(data);
+                },
+                error: function () {
+                    console.log("error from the method");
+                    // window.location.replace("/login");
+                }
+            });
+        });
+
+
+
+
+    </script>
+
+
 </body>
+
 </html>

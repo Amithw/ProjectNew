@@ -44,9 +44,10 @@ router.get('/student/logout', passController.logout);
 router.get('/google', passController.google);
 router.get('/google/redirect',passController.google,passController.redirect);
 router.get('/student/home',passController.home);
-router.get('/google/student',passController.profile);
+
 router.get('/student/edit/:id',passController.edit);
 router.post('/student_edit/:id',passController.studentUpdate);
+router.get('/google/student',passController.profile);
 
 router.use(appController.pageNotFound);
 

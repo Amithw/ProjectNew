@@ -91,6 +91,7 @@
             };
 
             console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic} `);
+            
             $.ajax({
                 type: "put",
                 url: `/users/${id}`,
