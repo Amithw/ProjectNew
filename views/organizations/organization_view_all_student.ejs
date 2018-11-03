@@ -1,23 +1,29 @@
-<% include _header_style_links %>
-<h1>wel come</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h1>organization Id:</h1>
+        <h1 id="org_id"></h1>
+        <% practices.forEach(function (user) { %>
+            <br>
+<% if(user.status=="Availabal"){ %>
 
-<a href="./admin/user">Add User</a>
-<a href="./admin/getUsers">All students</a>
+            <img src="<%= user.thumbnail %>" />
+            <%= user.f_name %>
+            <%= user.l_name %>
+            <%= user.id %>
+            <a href ="<%= user.cv %>">cv link</a>
+            <a href="/organizations/profile/<%= user.id %>">view profile</a>
+            <!-- note you defined the field as Name not name -->
+            <% } %>
+            <% }) %>
 
-<button type="button" class="btn btn-primary" id="logout">Logout</button>
-
-user home
-
-<h1>Admin Id:</h1>
-<h1 id="student_id"></h1>
-<!-- <h1 id="nic"></h1>
-<h1 id="phone_number"></h1> -->
-<h1 id="email"></h1>
-<!-- <img src="photo"  width="42" height="42"> -->
-<!-- <h1 id="cv"></h1> -->
-<h1 id="technical_skills"></h1>
-
-
+</body>
 <% include _script_links %>
 
 <script>
@@ -30,7 +36,7 @@ user home
             dataType: "json",
             success: function (data) {
 
-                $("#student_id").text(data.student_id);
+                $("#org_id").text(data.student_id);
                 $("#nic").text(data.nic);
                 $("#phone_number").text(data.phone_number);
                 $("#email").text(data.email);
@@ -56,3 +62,5 @@ user home
      });
 
 </script>
+
+</html>

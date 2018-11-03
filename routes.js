@@ -35,7 +35,17 @@ router.put("/users/:id", userController.userUpdate);
 
 
 //routes for organizations
+
 router.get("/organizations", organizationController.displayHome);
+router.get("/organizations/edit", organizationController.edit);
+router.get("/organizations/cart", organizationController.viewCart);
+router.post("/organizations/cart/:id", organizationController.viewCartA);
+router.get("/organizations/:id", organizationController.getOrganization);
+router.put("/organizations/:id", organizationController.organizationUpdate);
+router.get("/organizations/getUsers", organizationController.getOrganization);
+router.get("/organizations/profile/:id", organizationController.getUserprofile);
+router.post("/organizations/:id", organizationController.add_cart);
+
 
 
 // routes for passport

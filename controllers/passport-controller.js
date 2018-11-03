@@ -72,21 +72,7 @@ module.exports.authCheck = authCheck;
 
 edit = function (req, res) {
 
-
-    // User.findOne({ id: req.params.id }).exec(function (err, user) {
-    //     if (err) {
-    //         console.log("error");
-
-    //     }
-    //     else {
-    //         console.log(req.user.id);
-    //         res.render("student_edit", { user: req.user });
-
-    //     }
-    // })
-
-    // res.render("student_edit");
-      res.render('student_edit', { user: req.user });
+    res.render('student_edit', { user: req.user });
     console.log("edit page loading");
     // res.send('You are logged in, this is your profile-' + req.user.username);
 };
@@ -95,24 +81,21 @@ module.exports.edit = edit;
 
 studentUpdate = function (req, res, next) {
 
-        var id = req.params.id;
-      
-        console.log(id);
-        User.findByIdAndUpdate(id, {
-            $set: {
-                student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv,status:req.body.status, technical_skills: req.body.technical_skills,
-            }
-        }, { new: true }, function (err, user) {
-            if (err) {
-                console.log(err);
-                res.render("student_edit");
-            }
-            
-          
-        })
-    }
+    var id = req.params.id;
+
+    console.log(id);
+    User.findByIdAndUpdate(id, {
+        $set: {
+            student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv, linkedin: req.body.linkedin, status: req.body.status, technical_skills: req.body.technical_skills,
+        }
+    }, { new: true }, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.render("student_edit");
+        }
 
 
-
+    })
+}
 
 module.exports.studentUpdate = studentUpdate;

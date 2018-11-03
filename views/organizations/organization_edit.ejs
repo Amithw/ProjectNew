@@ -8,31 +8,27 @@
     <title>Document</title>
     <% include _header_style_links %>
 </head>
-<h1>Student Id:</h1>
-<h1 id="student_id"></h1>
 
 <body>
     <form>
 
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-            <label for="nic">NIC</label>
-            <input type="text" class="form-control" id="nic" placeholder="NIC" required>
-            <label for="email">E-Mail</label>
+            <label for="name">Organization Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Organization Name" required>
+            <label for="email">Organization E-Mail</label>
             <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-            <label for="phone">Phone Number</label>
+            <label for="phone">Organization Contact Number</label>
             <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-            <label for="technical_skills">Technical Skills</label>
-            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
-            <label for="cv">CV</label>
-            <input type="text" class="form-control" id="cv" placeholder="CV link" required>
-            <!-- <label for="image">image</label>
-            <input type="file" class="form-control" name="photo" id="photo" placeholder="Your Photo" required> -->
+            <label for="phone">Web Site </label>
+            <input type="text" class="form-control" id="web" placeholder="web site" required>
+            <!-- <label for="vacancy">Available Vacancies</label>
+            <input type="text" class="form-control" id="vacancy" placeholder="Available Vacancies" required>
+            <label for="closing_date">Closing Date</label> -->
+            <!-- <input type="date" class="form-control" id="closing_date" placeholder="Closing Date" required> -->
 
         </div>
 
-        <button type="submit" class="btn btn-primary" id="userUpdate">submit</button>
+        <button type="button" class="btn btn-primary" id="organizationUpdate">submit</button>
     </form>
 
 
@@ -50,12 +46,12 @@
 
                     $("#student_id").text(data.student_id);
                     $("#name").text(data.name);
-                    $("#nic").text(data.nic);
+                     $("#web").text(data.web);
                     $("#phone_number").text(data.phone_number);
                     $("#email").text(data.email);
-                   // $("#photo").file(data.photo);
-                    $("#cv").text(data.cv);
-                    $("#technical_skills").text(data.technical_skills);
+                    // $("#photo").src(data.photo);
+                    // ("#closing_date").date(data.closing_date);
+                    //  $("#vacancy").text(data.vacancy);
 
                     console.log(data);
                     id = data._id;
@@ -70,36 +66,34 @@
             window.location.replace("/");
         }
 
-
-        $("#userUpdate").click(function () {
+        $("#organizationUpdate").click(function () {
 
             var name = $("#name").val();
-            var nic = $("#nic").val();
+            var web = $("#web").val();
             var phone_number = $("#phone_number").val();
             var email = $("#email").val();
-            var technical_skills = $("#technical_skills").val();
-            var cv = $("#cv").val();
+            // var vacancy = $("#vacancy").val();
+            //var closing_date = $("#closing_date").val();
 
-            var userUpdate = {
+            var organizationUpdate = {
                 name: name,
-                technical_skills: technical_skills,
-                email: email,
+                web: web,
+                //closing_date: closing_date,
                 phone_number: phone_number,
-                nic: nic,
-                cv: cv
+                // vacancy: vacancy
+              //  closing_date: closing_date
 
             };
 
-            console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic} `);
-            
+            console.log(`${name}  ${email} ${web} ${phone_number} ${vacancy}`);
             $.ajax({
                 type: "put",
-                url: `/users/${id}`,
+                url: `/organizations/${id}`,
                 dataType: "json",
-                data: userUpdate,
+                data: organizationUpdate,
                 success: function (data) {
 
-                    window.location.replace("/users");
+                    window.location.replace("/organizations");
                 },
                 error: function () {
                     console.log("error from the method");

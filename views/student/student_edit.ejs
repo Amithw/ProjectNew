@@ -36,7 +36,8 @@
                 required>
             <label for="cv">CV</label>
             <input type="text" class="form-control" id="cv" placeholder="CV link" value="<%= user.cv %>" required>
-
+            <label for="linkedin">Linkedin Link</label>
+            <input type="text" class="form-control" id="linkedin" placeholder="Linkedin Link" value="<%= user.linkedin %>" required>
             <label for="status">Career Availability</label><br>
             <!-- <input type="text" class="form-control" id="role" placeholder="role" required> -->
             <input type="radio" name="status" id="r1" value="Availabal"> Availabal<br>
@@ -69,6 +70,8 @@
             var technical_skills = $("#technical_skills").val();
             var cv = $("#cv").val();
             var university = $("#university").val();
+            var linkedin = $("#linkedin").val();
+            
 
 
             var studentUpdate = {
@@ -79,7 +82,8 @@
                 technical_skills: technical_skills,
                 cv: cv,
                 university: university,
-                status: status
+                status: status,
+                linkedin:linkedin
 
 
             };
@@ -98,7 +102,7 @@
                 },
                 error: function () {
                     console.log("error from the method");
-                    // window.location.replace("/login");
+                    window.location.replace("/student_home");
                 }
             });
         });

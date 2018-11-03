@@ -7,12 +7,13 @@ const userSchema = new mongoose.Schema({
     name: { type: String },
     password: { type: String, required: true, min: 5 },
     role: { type: String },
-    nic: { type: String },
-    phone_number: { type: Number },
-    email: { type: String },
-    photo: { type: String },
-    cv: { type: String },
-    technical_skills: { type: [String] }
+    phone_number: { type: Number,unique: true },
+    email: { type: String,unique: true },
+    web: { type: String },
+    vacancy: { type: String },
+    closing_date: { type: Date },
+    updated_at: { type: Date, default: Date.now }
+
 
 
 });

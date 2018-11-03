@@ -1,0 +1,97 @@
+<body>
+    hello
+    <h1>organization Id:</h1>
+    <h1 id="org_id"></h1>
+    <% practices.forEach(function (user) { %>
+    <br>
+
+    <img src="<%= user.thumbnail %>" />
+    <%= user.f_name %>
+    <%= user.l_name %>
+    <%= user.id %>
+    <a href="<%= user.cv %>">cv link</a>
+
+    <form>
+        <input type="hidden" id="s_id" value="<%= user.id %>"  />
+        <input type="hidden" id="view" value="not_view" />
+
+        <input type="button" id="add_cart" value="Add to Cart" />
+    </form> 
+
+
+    <!-- note you defined the field as Name not name -->
+
+    <% }) %>
+
+
+
+    <% include _script_links %>
+    <script>
+
+        var token = localStorage.getItem("token");
+        let id;
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${token}`,
+                dataType: "json",
+                success: function (data) {
+
+                    $("#org_id").text(data.student_id);
+                    $("#nic").text(data.nic);
+                    $("#phone_number").text(data.phone_number);
+                    $("#email").text(data.email);
+                    // $("#photo").src(data.photo);
+                    // ("#cv").text(data.cv);
+                    $("#technical_skills").text(data.technical_skills);
+
+                    console.log(data);
+                    id = data._id;
+                    o_id = data.student_id;
+                },
+                error: function () {
+                    console.log("error from the method");
+                }
+            });
+
+        } else {
+            window.location.replace("/");
+        }
+
+        $("#add_cart").click(function () {
+           
+            var s_id = $("#s_id").val();
+            var view = $("#view").val();
+            
+            
+
+            var add_cart = {
+                s_id: s_id,
+                view: view,
+                o_id:o_id
+               
+            };
+
+            console.log(`${s_id} ${view} ${o_id}`);
+            $.ajax({
+                type: "POST",
+                url: `/organizations/${id}`,
+                dataType: "json",
+                data: add_cart,
+                success: function (data) {
+
+                    window.location.replace("/organizations");
+                },
+                error: function () {
+                    console.log("error from the method");
+                    window.location.replace("/organizations/:$id");
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

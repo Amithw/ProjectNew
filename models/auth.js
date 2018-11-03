@@ -12,6 +12,7 @@ const auth = new mongoose.Schema({
     phone_number: { type: Number },
     email_address: { type: Object, unique: true },
     cv: { type: String },
+    linkedid: { type: String },
     technical_skills: { type: [String] },
     university:{ type: String },
     updated_at: { type: Date, default: Date.now }

@@ -1,15 +1,16 @@
 <% include _header_style_links %>
 <h1>wel come</h1>
+<a href="./organizations/cart">Cart</a>
+<a href="./organizations/edit">Edit Profile</a>
+<a href="./organizations/getUsers">View Students</a><br>
 
-<a href="./organization/edit">Edit Profile</a>
-<a href="./organization/getUsers">View Students</a>
 
 <button type="button" class="btn btn-primary" id="logout">Logout</button>
 
-organization H ome
+Organization Home
 
 <h1>organization Id:</h1>
-<h1 id="student_id"></h1>
+<h1 id="org_id"></h1>
 <!-- <h1 id="nic"></h1>
 <h1 id="phone_number"></h1> -->
 <h1 id="email"></h1>
@@ -32,7 +33,7 @@ organization H ome
             dataType: "json",
             success: function (data) {
 
-                $("#student_id").text(data.student_id);
+                $("#org_id").text(data.student_id);
                 $("#nic").text(data.nic);
                 $("#phone_number").text(data.phone_number);
                 $("#email").text(data.email);

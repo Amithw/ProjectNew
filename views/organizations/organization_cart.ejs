@@ -1,0 +1,65 @@
+<body>
+        hello
+        <h1>organization Id:</h1>
+        <h1 id="org_id"></h1>
+       
+
+        <%= user.s_id %>
+
+    
+    
+
+        <% include _script_links %>
+        <script>
+    
+            var token = localStorage.getItem("token");
+            let id;
+            if (!!token) {
+                $.ajax({
+                    type: "GET",
+                    url: `/users/${token}`,
+                    dataType: "json",
+                    success: function (data) {
+    
+                        $("#org_id").text(data.student_id);
+                        $("#nic").text(data.nic);
+                        $("#phone_number").text(data.phone_number);
+                        $("#email").text(data.email);
+                        // $("#photo").src(data.photo);
+                        // ("#cv").text(data.cv);
+                        $("#technical_skills").text(data.technical_skills);
+    
+                        console.log(data);
+                        id = data._id;
+                        o_id = data.student_id;
+                    },
+                    error: function () {
+                        console.log("error from the method");
+                    }
+                });
+    
+            } else {
+                window.location.replace("/");
+            }
+    
+            $.ajax({
+                type: "post",
+                url: `/organizations/cart/${id}`,
+                dataType: "json",
+                data: userUpdate,
+                success: function (data) {
+
+                    window.location.replace("/organizations/cart");
+                },
+                error: function () {
+                    console.log("error from the method");
+                    window.location.replace("/organizations/cart");
+                }
+            });
+    
+    
+        </script>
+    </body>
+    
+    </html>
+    
