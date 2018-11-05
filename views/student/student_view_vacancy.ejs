@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    hello<br>
+    <%= user.username %>
+
+    <% practices.forEach(function (organization) { %>
+    <br>
+
+
+
+    <%= organization.student_id %>
+
+    <% if(organization.name){  %>
+    <%= organization.name %>
+    <%  } %>
+    <% if(organization.phone_number){  %>
+    <%= organization.phone_number %>
+    <%  } %>
+    <% if(organization.email){  %>
+    <%= organization.email %>
+    <%  } %>
+    <% if(organization.vacancy){  %>
+    <%= organization.vacancy %>
+    <%  } %>
+    <% if(organization.closing_date){  %>
+    <%= organization.closing_date %>
+    <%  } %>
+    <% if(organization.description){  %>
+    <%= organization.description %>
+    <%  } %>
+    <% if(organization.job_title){  %>
+    <%= organization.job_title %>
+    <%  } %>
+    <% if(organization.web){  %>
+    <a href="<%= organization.web %>">View WebSite</a>
+    <%  } %>
+
+    <a href="/student/send/cv/<%= organization.student_id %>">Apply</a>
+    <!-- <a href="http://www.google.com">View WebSite</a> -->
+
+    <% }) %>
+ 
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<%= user.id %>
+<%= id %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        
+        <input type="hidden" class="form-control" id="org_id" value="<%= id %>" />
+        
+        <input type="hidden" class="form-control" id="std_id" value="<%= user.id %>" />
+       
+        <input type="hidden" class="form-control" id="f_name" value="<%= user.f_name %>" />
+        
+        <input type="hidden" class="form-control" id="l_name" value="<%= user.l_name %>" />
+        
+        <input type="hidden" class="form-control" id="view" value="no" />
+        <label for="lable-control">CV Link</label><br>
+        <input type="text" class="form-control" id="cv" value="<%= user.cv %>" required /><br>
+        <label for="lable-control">Job Title</label><br>
+        <input type="text" class="form-control" id="job_title" value="<%= user.job_title %>" required /><br>
+        <label for="lable-control">Technical Skills</label><br>
+        <input type="text" class="form-control" id="skills" value="<%= user.technical_skills %>" required /><br>
+        <label for="lable-control">Phone Number</label><br>
+        <input type="text" class="form-control" id="phone_number" value="<%= user.phone_number %>" required /><br>
+        <label for="lable-control">E-Mail </label><br>
+        <input type="email" class="form-control" id="email" value="<%= user.email %>" required /><br>
+
+        <input type="button" class="btn btn-primary" id="sendCv" value="Submit">
+
+    </form>
+
+    <% include _script_links %>
+    <script>
+        $("#sendCv").click(function () {
+
+            var org_id = $("#org_id").val();
+            var std_id = $("#std_id").val();
+            var f_name = $("#f_name").val();
+            var l_name = $("#l_name").val();
+            var phone_number = $("#phone_number").val();
+            var skills = $("#skills").val();
+            var cv = $("#cv").val();
+            var view = $("#university").val();
+            var job_title = $("#job_title").val();
+            var email = $("#email").val();
+
+
+
+
+            var sendCv = {
+                org_id: org_id,
+                std_id: std_id,
+                f_name: f_name,
+                l_name: l_name,
+                phone_number: phone_number,
+                skills: skills,
+                cv: cv,
+                view: view,
+                job_title: job_title,
+                email: email
+
+
+            };
+
+
+            //   console.log(`${f_name} ${id} ${university} `);
+
+            $.ajax({
+                type: "POST",
+                url: `/student/send/cv/${org_id}`,
+                dataType: "json",
+                data: sendCv,
+                success: function (data) {
+
+                    console.log(data);
+                },
+                error: function () {
+                    console.log("error from the method");
+                    window.location.replace("/student_home");
+                }
+            });
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

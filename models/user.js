@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema({
     email: { type: String,unique: true },
     web: { type: String },
     vacancy: { type: String },
+    Availability:{ type: String },
+    description:{ type: String },
+    job_title:{ type: String },
     closing_date: { type: Date },
     updated_at: { type: Date, default: Date.now }
 

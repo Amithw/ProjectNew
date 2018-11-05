@@ -13,7 +13,7 @@ module.exports.displayHome = displayHome;
 
 
 authenticate = function (req, res, next) {
-    var userData = req.body;
+     var userData = req.body; 
     console.log(userData);
     User.findOne({ student_id: userData.student_id }, function (err, user) {
         if (err) {
@@ -76,23 +76,13 @@ module.exports.getUser = getUser;
 getUsers = function (req, res, next) {
 
     User.find({}, function(err, data) {
-        // note that data is an array of objects, not a single object!
+        
         res.render('user_all', {
             user : req.user,
             practices: data
         });
     });
 
-    // User.find({}, { student_id: 1,name:1, role: 1, nic: 1, phone_number: 1, email: 1, photo: 1, cv: 1, technical_skills: 1 }, function (err, users) {
-    //     if (err) {
-    //         res.status(500);
-    //         res.send({ errors: "internal serve error" });
-    //     }
-    //     if (users) {
-    //         res.status(200);
-    //         res.send({ users });
-    //     }
-    // });
 }
 module.exports.getUsers = getUsers;
 

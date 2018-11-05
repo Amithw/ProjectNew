@@ -38,13 +38,15 @@ router.put("/users/:id", userController.userUpdate);
 
 router.get("/organizations", organizationController.displayHome);
 router.get("/organizations/edit", organizationController.edit);
-router.get("/organizations/cart", organizationController.viewCart);
-router.post("/organizations/cart/:id", organizationController.viewCartA);
+router.get("/organizations/viewCart", organizationController.viewCart);
+router.get("/organizations/cart/:id", organizationController.getUser);
 router.get("/organizations/:id", organizationController.getOrganization);
 router.put("/organizations/:id", organizationController.organizationUpdate);
 router.get("/organizations/getUsers", organizationController.getOrganization);
 router.get("/organizations/profile/:id", organizationController.getUserprofile);
+
 router.post("/organizations/:id", organizationController.add_cart);
+
 
 
 
@@ -54,10 +56,12 @@ router.get('/student/logout', passController.logout);
 router.get('/google', passController.google);
 router.get('/google/redirect',passController.google,passController.redirect);
 router.get('/student/home',passController.home);
-
 router.get('/student/edit/:id',passController.edit);
 router.post('/student_edit/:id',passController.studentUpdate);
 router.get('/google/student',passController.profile);
+router.get('/student/vacancy',passController.viewVacancy);
+router.get('/student/send/cv/:id',passController.sendCv);
+router.post('/student/send/cv/:id',passController.sendCvDetails);
 
 router.use(appController.pageNotFound);
 

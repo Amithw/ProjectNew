@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-        <h1>organization Id:</h1>
-        <h1 id="org_id"></h1>
-        <% practices.forEach(function (user) { %>
-            <br>
-<% if(user.status=="Availabal"){ %>
 
-            <img src="<%= user.thumbnail %>" />
-            <%= user.f_name %>
-            <%= user.l_name %>
-            <%= user.id %>
-            <a href ="<%= user.cv %>">cv link</a>
-            <a href="/organizations/profile/<%= user.id %>">view profile</a>
-            <!-- note you defined the field as Name not name -->
-            <% } %>
-            <% }) %>
+<body>
+    <h1>organization Id:</h1>
+    <h1 id="org_id"></h1>
+
+  
+    <% practices.forEach(function (user) { %>
+    <br>
+    <% if(user.status=="Availabal"){ %>
+
+    <img src="<%= user.thumbnail %>" />
+    <%= user.f_name %>
+    <%= user.l_name %>
+    <%= user.id %>
+    <a href="<%= user.cv %>">cv link</a>
+    <a href="/organizations/profile/<%= user.id %>">view profile</a>
+    <!-- note you defined the field as Name not name -->
+    <% } %>
+    <% }) %>
 
 </body>
 <% include _script_links %>
@@ -56,10 +60,10 @@
         window.location.replace("/");
     }
 
-     $("#logout").click(function () {
+    $("#logout").click(function () {
         localStorage.clear("token");
-        window.location.replace("login"); 
-     });
+        window.location.replace("login");
+    });
 
 </script>
 

@@ -1,4 +1,6 @@
 const User = require("../models/auth");
+const Org = require("../models/user");
+const Box = require("../models/box");
 const passport = require('passport');
 const session = require('express-session');
 
@@ -91,7 +93,7 @@ studentUpdate = function (req, res, next) {
     }, { new: true }, function (err, user) {
         if (err) {
             console.log(err);
-            res.render("student_edit");
+            res.render("student_edit"); 
         }
 
 
@@ -99,3 +101,54 @@ studentUpdate = function (req, res, next) {
 }
 
 module.exports.studentUpdate = studentUpdate;
+
+
+viewVacancy = function (req, res) {
+
+    Org.find({role:"organization"}, function (err, data) {
+
+        res.render('student_view_vacancy', {
+            user: req.user,
+            practices: data
+    
+        });
+        console.log(data);
+    });
+
+
+    // res.send('You are logged in, this is your profile-' + req.user.username);
+};
+
+module.exports.viewVacancy = viewVacancy;
+
+sendCv= function (req, res) {
+
+    var id = req.params.id;
+    
+    console.log(id);
+    
+
+    res.render('student_send_cv', { user: req.user, id});
+    console.log("edit page loading");
+    // res.send('You are logged in, this is your profile-' + req.user.username);
+};
+
+module.exports.sendCv = sendCv;
+
+sendCvDetails = function (req, res) {   
+ console.log(req.body);
+var newBox = new Box(req.body);
+
+console.log(newBox);
+
+newBox.save(function (err, Box) {
+    if (err) {
+        console.log("err");
+        res.status(401).send(err);
+    } if (Box) {
+        console.log("sucess");
+        res.status(200).send({ message: "Box sucessfully created" });
+    }
+});
+}
+module.exports.sendCvDetails = sendCvDetails;

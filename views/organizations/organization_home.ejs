@@ -1,9 +1,9 @@
 <% include _header_style_links %>
 <h1>wel come</h1>
-<a href="./organizations/cart">Cart</a>
+
 <a href="./organizations/edit">Edit Profile</a>
 <a href="./organizations/getUsers">View Students</a><br>
-
+<a href="./organizations/viewCart">View Cart</a><br>
 
 <button type="button" class="btn btn-primary" id="logout">Logout</button>
 
@@ -16,7 +16,7 @@ Organization Home
 <h1 id="email"></h1>
 <!-- <img src="photo"  width="42" height="42"> -->
 <!-- <h1 id="cv"></h1> -->
-<h1 id="technical_skills"></h1>
+<!-- <h1 id="technical_skills"></h1> -->
 
 
 
@@ -26,6 +26,8 @@ Organization Home
 <script>
 
     var token = localStorage.getItem("token");
+    var id;
+    var org_id;
     if (!!token) {
         $.ajax({
             type: "GET",
@@ -39,10 +41,11 @@ Organization Home
                 $("#email").text(data.email);
                 // $("#photo").src(data.photo);
                 // ("#cv").text(data.cv);
-                $("#technical_skills").text(data.technical_skills);
+                //$("#technical_skills").text(data.technical_skills);
 
                 console.log(data);
-
+                id = data._id;
+                org_id = data.student_id;
             },
             error: function () {
                 console.log("error from the method");
@@ -57,5 +60,9 @@ Organization Home
         localStorage.clear("token");
         window.location.replace("login"); 
      });
+
+      
+
+
 
 </script>

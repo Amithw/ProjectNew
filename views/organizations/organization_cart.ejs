@@ -1,65 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
 <body>
-        hello
-        <h1>organization Id:</h1>
-        <h1 id="org_id"></h1>
-       
 
-        <%= user.s_id %>
+    hello
 
+    <h1 id="o__id"></h1>
     
-    
+    <!-- <%= orgainization.student_id %> -->
+    <% practices.forEach(function (orgainization) { %>
+    <br>
 
-        <% include _script_links %>
-        <script>
-    
-            var token = localStorage.getItem("token");
-            let id;
-            if (!!token) {
-                $.ajax({
-                    type: "GET",
-                    url: `/users/${token}`,
-                    dataType: "json",
-                    success: function (data) {
-    
-                        $("#org_id").text(data.student_id);
-                        $("#nic").text(data.nic);
-                        $("#phone_number").text(data.phone_number);
-                        $("#email").text(data.email);
+    <%= orgainization.o_id %>
+    <%= orgainization.s_id %>
+    <%= orgainization.view %>
+
+
+    <% }) %>
+
+
+    <% include _script_links %>
+
+
+        <h1 id="s_id"></h1>
+    <script>
+
+
+        var token = localStorage.getItem("token");
+        var id;
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/organizations/cart/${token}`,
+                dataType: "json",
+                success: function (data) {
+                    for (i = 0; i < data.length; i++) {
+                        $("#o_id").text(data[i].o_id);
+                        $("#view").text(data[i].view);
+                        $("#s_id").text(data[i].s_id);
+                        // $("#email").text(data.email);
                         // $("#photo").src(data.photo);
                         // ("#cv").text(data.cv);
-                        $("#technical_skills").text(data.technical_skills);
-    
-                        console.log(data);
-                        id = data._id;
-                        o_id = data.student_id;
-                    },
-                    error: function () {
-                        console.log("error from the method");
-                    }
-                });
-    
-            } else {
-                window.location.replace("/");
-            }
-    
-            $.ajax({
-                type: "post",
-                url: `/organizations/cart/${id}`,
-                dataType: "json",
-                data: userUpdate,
-                success: function (data) {
+                        // $("#technical_skills").text(data.technical_skills);
 
-                    window.location.replace("/organizations/cart");
+
+
+                        //console.log(data[i]);
+                        console.log(data[i].s_id);
+                        
+
+                    }
+
                 },
                 error: function () {
                     console.log("error from the method");
-                    window.location.replace("/organizations/cart");
                 }
             });
-    
-    
-        </script>
-    </body>
-    
-    </html>
-    
+
+
+        }
+        else {
+            window.location.replace("/");
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
