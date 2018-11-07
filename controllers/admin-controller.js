@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const User = require("../models/organization");
 const Auth = require("../models/auth");
 
 // function for displaying  home

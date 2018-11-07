@@ -1,5 +1,5 @@
-const User = require("../models/auth");
-const Org = require("../models/user");
+const Auth = require("../models/auth");
+const User = require("../models/organization");
 const Box = require("../models/box");
 const passport = require('passport');
 const session = require('express-session');
@@ -86,7 +86,7 @@ studentUpdate = function (req, res, next) {
     var id = req.params.id;
 
     console.log(id);
-    User.findByIdAndUpdate(id, {
+    Auth.findByIdAndUpdate(id, {
         $set: {
             student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv, linkedin: req.body.linkedin, status: req.body.status, technical_skills: req.body.technical_skills,
         }
@@ -105,7 +105,7 @@ module.exports.studentUpdate = studentUpdate;
 
 viewVacancy = function (req, res) {
 
-    Org.find({role:"organization"}, function (err, data) {
+    User.find({role:"organization"}, function (err, data) {
 
         res.render('student_view_vacancy', {
             user: req.user,

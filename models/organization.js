@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const SALT_FACTOR = 10;
 
-const userSchema = new mongoose.Schema({
+const OrgSchema = new mongoose.Schema({
     student_id: { type: String, required: true, unique: true },
     name: { type: String },
     password: { type: String, required: true, min: 5 },
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
 
 
 
-userSchema.pre("save", function (done) {
+OrgSchema.pre("save", function (done) {
     console.log("user .pre works");
     var user = this;
 
@@ -49,13 +49,13 @@ userSchema.pre("save", function (done) {
 
 
 
-userSchema.methods.checkPassword = function (password, done) {
+OrgSchema.methods.checkPassword = function (password, done) {
     bcrypt.compare(password, this.password, function (err, isMatch) {
         done(err, isMatch);
     });
 }
 
-module.exports = mongoose.model("Organization", userSchema);
+module.exports = mongoose.model("Organization", OrgSchema);
 
 
 

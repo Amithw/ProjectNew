@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const User = require("../models/organization");
 const SECRET_KEY = "amith";
 // function for displaying  home
 
@@ -61,9 +61,11 @@ getUser = function (req, res, next) {
                 res.send({ error: "no user can be found" });
             }
             if (user) {
+               
                 res.status(200);
                 res.send(user);
-
+                
+              
             }
         });
 
