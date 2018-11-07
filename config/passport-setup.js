@@ -31,7 +31,7 @@ passport.use(
             } else {
                 //if not, create user in our db
                 new User({
-                    // email:email._raw.emails,
+                   
                     email_address: email.emails[0],
                     username: email.displayName,
                     googleId: email.id,

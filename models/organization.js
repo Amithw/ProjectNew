@@ -14,10 +14,14 @@ const OrgSchema = new mongoose.Schema({
     Availability:{ type: String },
     description:{ type: String },
     job_title:{ type: String },
-    closing_date: { type: Date },
+    technology:{type:String},
+    vacancy_amount:{ type: String },
+    closing_date: { type: String },
+    job_title2:{ type: String },
+    technology2:{type:String},
+    vacancy_amount2:{ type: String },
+    closing_date2: { type: String },
     updated_at: { type: Date, default: Date.now }
-
-
 
 });
 

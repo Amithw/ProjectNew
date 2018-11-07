@@ -20,11 +20,11 @@
             <label for="phone">Organization Contact Number</label>
             <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
             <label for="phone">Web Site </label>
-            <input type="text" class="form-control" id="web" placeholder="web site" required>
-            <label for="vacancy">Available Vacancies</label>
-            <input type="text" class="form-control" id="vacancy" placeholder="Available Vacancies" required>
-         
-           
+            <input type="text" class="form-control" id="web" placeholder="Web Site" required>
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Description" required>
+
+
 
         </div>
 
@@ -46,12 +46,10 @@
 
                     $("#student_id").text(data.student_id);
                     $("#name").text(data.name);
-                     $("#web").text(data.web);
+                    $("#web").text(data.web);
                     $("#phone_number").text(data.phone_number);
                     $("#email").text(data.email);
-                    // $("#photo").src(data.photo);
-                    // ("#closing_date").date(data.closing_date);
-                      $("#vacancy").text(data.vacancy);
+                    $("#description").text(data.description);
 
                     console.log(data);
                     id = data._id;
@@ -72,7 +70,7 @@
             var web = $("#web").val();
             var phone_number = $("#phone_number").val();
             var email = $("#email").val();
-             var vacancy = $("#vacancy").val();
+            var vacancy = $("#vacancy").val();
             //var closing_date = $("#closing_date").val();
 
             var organizationUpdate = {
@@ -80,8 +78,8 @@
                 web: web,
                 //closing_date: closing_date,
                 phone_number: phone_number,
-                 vacancy: vacancy
-              //  closing_date: closing_date
+                vacancy: vacancy
+                //  closing_date: closing_date
 
             };
 
