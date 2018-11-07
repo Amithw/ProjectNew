@@ -3,13 +3,16 @@
 
 <a href="./admin/user">Add User</a>
 <a href="./admin/getUsers">All students</a>
+<a href="./admin/getAdmins">All Admins</a>
+<a href="./admin/getOrganizations">All Organizations</a>
+<a href="./admin/edit">Edit Profile</a>
 
 <button type="button" class="btn btn-primary" id="logout">Logout</button>
 
 user home
 
 <h1>Admin Id:</h1>
-<h1 id="student_id"></h1>
+<h1 id="admin_id"></h1>
 <!-- <h1 id="nic"></h1>
 <h1 id="phone_number"></h1> -->
 <h1 id="email"></h1>
@@ -30,7 +33,7 @@ user home
             dataType: "json",
             success: function (data) {
 
-                $("#student_id").text(data.student_id);
+                $("#admin_id").text(data.student_id);
                 $("#nic").text(data.nic);
                 $("#phone_number").text(data.phone_number);
                 $("#email").text(data.email);

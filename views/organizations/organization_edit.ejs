@@ -21,10 +21,10 @@
             <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
             <label for="phone">Web Site </label>
             <input type="text" class="form-control" id="web" placeholder="web site" required>
-            <!-- <label for="vacancy">Available Vacancies</label>
+            <label for="vacancy">Available Vacancies</label>
             <input type="text" class="form-control" id="vacancy" placeholder="Available Vacancies" required>
-            <label for="closing_date">Closing Date</label> -->
-            <!-- <input type="date" class="form-control" id="closing_date" placeholder="Closing Date" required> -->
+         
+           
 
         </div>
 
@@ -51,7 +51,7 @@
                     $("#email").text(data.email);
                     // $("#photo").src(data.photo);
                     // ("#closing_date").date(data.closing_date);
-                    //  $("#vacancy").text(data.vacancy);
+                      $("#vacancy").text(data.vacancy);
 
                     console.log(data);
                     id = data._id;
@@ -72,7 +72,7 @@
             var web = $("#web").val();
             var phone_number = $("#phone_number").val();
             var email = $("#email").val();
-            // var vacancy = $("#vacancy").val();
+             var vacancy = $("#vacancy").val();
             //var closing_date = $("#closing_date").val();
 
             var organizationUpdate = {
@@ -80,7 +80,7 @@
                 web: web,
                 //closing_date: closing_date,
                 phone_number: phone_number,
-                // vacancy: vacancy
+                 vacancy: vacancy
               //  closing_date: closing_date
 
             };

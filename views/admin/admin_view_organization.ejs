@@ -9,10 +9,16 @@
 <body>
         <% practices.forEach(function (practice) { %>
             <br>
-            <%= practice.f_name %>
-            <%= practice.l_name %>
-            <a href ="<%= practice.cv %>">cv link</a>
-            <a href ="/admin/deleteUser/<%= practice._id %>">Delete</a>
+            <%= practice.name %>
+            <%= practice.phone_number %>
+            <%= practice.email %>
+            <%= practice.phone_number %>
+           
+            <a href ="/admin/deleteOrganization/<%= practice._id %>">Delete</a>
+
             <% }) %>
+
+
+            
 </body>
 </html>

@@ -13,7 +13,7 @@ const passport = require('passport');
 const session = require('express-session');
 
 const app = express();
-//const config = require("./config/config.json")[app.get("env")];
+
 
 db.connect(keys.mongodb.dbURI);
 
@@ -42,12 +42,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-// create home route
-// app.get('/',function(req,res){
-//     res.render('home',{user:req.user});
-// });
 
 app.use(routes);
 

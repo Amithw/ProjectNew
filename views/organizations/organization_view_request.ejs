@@ -5,11 +5,15 @@
 <% practices.forEach(function (orgainization) { %>
 <br>
 
-<%= orgainization.o_id %>
-<%= orgainization.s_id %>
+<%= orgainization.f_name %>
+<%= orgainization.l_name %>
+<%= orgainization.job_title %>
+<%= orgainization.phone_number %>
+<%= orgainization.email %>
+<%= orgainization.skills %>
 <%= orgainization.cv %>
 
-<a href ="/organizations/deleteCart/<%= orgainization._id %>">Delete</a>
+<a href ="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a>
 <% }) %>
 
 <% include _script_links %>

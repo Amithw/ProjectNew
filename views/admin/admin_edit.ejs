@@ -54,6 +54,7 @@
 
                     console.log(data);
                     id = data._id;
+                    
 
                 },
                 error: function () {
@@ -85,7 +86,7 @@
             console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic}`);
             $.ajax({
                 type: "put",
-                url: `/users/${id}`,
+                url: `/admin/${id}`,
                 dataType: "json",
                 data: userUpdate,
                 success: function (data) {
@@ -100,6 +101,7 @@
         });
 
 
+    
 
     </script>
 </body>

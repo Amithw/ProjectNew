@@ -2,13 +2,14 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Auth = require("../models/auth");
 const Cart = require("../models/cart");
+const Box = require("../models/box");
 const SECRET_KEY = "amith";
 // function for displaying home
 
 
 
 displayHome = function (req, res, next) {
-    
+
     res.render("organization_home");
 }
 
@@ -21,14 +22,14 @@ module.exports.edit = edit;
 
 getOrganization = function (req, res, next) {
 
- 
+
     Auth.find({}, function (err, data) {
 
         res.render('organization_view_all_student', {
             user: req.user,
             practices: data
         });
-    //    console.log(data);
+        //    console.log(data);
         //console.log("user");
     });
 
@@ -101,15 +102,15 @@ add_cart = function (req, res, next) {
 module.exports.add_cart = add_cart;
 
 viewCart = function (req, res, next) {
+    id = req.params.id;
 
-
-    Auth.find({}, function (err, cartdata) {
+    Cart.find({ o_id: id }, function (err, cartData) {
 
         res.render('organization_cart', {
             user: req.user,
-            practices: cartdata
+            practices: cartData
         });
-        console.log(cartdata);
+        console.log(cartData);
     });
 }
 module.exports.viewCart = viewCart;
@@ -140,3 +141,53 @@ getUser = function (req, res, next) {
 }
 
 module.exports.getUser = getUser;
+
+deleteCart = function (req, res, next) {
+    var id = req.params.id;
+    console.log(id);
+    Cart.deleteOne({ _id: id }, function (err) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "internal server errors" });
+        }
+        else {
+            res.status(200);
+            console.log("successfully deleted the Admin");
+            res.redirect('/organizations');
+        }
+    });
+}
+
+module.exports.deleteCart = deleteCart;
+
+viewRequest = function (req, res, next) {
+    id = req.params.id;
+
+    Box.find({ org_id: id }, function (err, boxData) {
+
+        res.render('organization_view_request', {
+            user: req.user,
+            practices: boxData
+        });
+        console.log(boxData);
+    });
+}
+module.exports.viewRequest = viewRequest;
+
+deleteRequest = function (req, res, next) {
+    var id = req.params.id;
+    console.log(id);
+    Box.deleteOne({ _id: id }, function (err) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "internal server errors" });
+        }
+        else {
+            res.status(200);
+            console.log("successfully deleted the Admin");
+            res.redirect('/organizations');
+        }
+    });
+}
+
+module.exports.deleteRequest = deleteRequest;

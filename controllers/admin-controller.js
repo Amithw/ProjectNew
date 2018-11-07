@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Auth = require("../models/auth");
 
 // function for displaying  home
 
@@ -10,7 +11,7 @@ module.exports.displayHome = displayHome;
 
 getUsers = function (req, res, next) {
 
-    User.find({}, function(err, data) {
+    Auth.find({}, function(err, data) {
         // note that data is an array of objects, not a single object!
         res.render('admin_view_all', {
             user : req.user,
@@ -20,6 +21,32 @@ getUsers = function (req, res, next) {
 }
 
 module.exports.getUsers = getUsers;
+
+getAdmins = function (req, res, next) {
+
+    User.find({role:"admin"}, function(err, data) {
+        // note that data is an array of objects, not a single object!
+        res.render('admin_view_admin', {
+            user : req.user,
+            practices: data
+        });
+    });
+}
+
+module.exports.getAdmins = getAdmins;
+
+getOrganizations = function (req, res, next) {
+
+    User.find({role:"organization"}, function(err, data) {
+        // note that data is an array of objects, not a single object!
+        res.render('admin_view_organization', {
+            user : req.user,
+            practices: data
+        });
+    });
+}
+
+module.exports.getOrganizations = getOrganizations;
 
 
 
@@ -75,3 +102,58 @@ userUpdate = function (req, res, next) {
 }
 
 module.exports.userUpdate = userUpdate;
+
+deleteUser = function (req, res, next) {
+    var userData = req.params.id;
+    console.log(userData);
+    Auth.deleteOne({ _id: userData }, function (err) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "internal server errors" });
+        }
+        else {
+            res.status(200);
+            console.log( "successfully deleted the user");
+            res.redirect('/admin/getUsers');
+        }
+    });
+}
+
+module.exports.deleteUser = deleteUser;
+
+deleteAdmin = function (req, res, next) {
+    var userData = req.params.id;
+    console.log(userData);
+    User.deleteOne({ _id: userData }, function (err) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "internal server errors" });
+        }
+        else {
+            res.status(200);
+            console.log( "successfully deleted the Admin");
+            res.redirect('/admin/getAdmins');
+        }
+    });
+}
+
+module.exports.deleteAdmin = deleteAdmin;
+
+deleteOrganization = function (req, res, next) {
+    var userData = req.params.id;
+    console.log(userData);
+    User.deleteOne({ _id: userData }, function (err) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "internal server errors" });
+        }
+        else {
+            res.status(200);
+            console.log( "successfully deleted the Admin");
+            res.redirect('/admin/getOrganizations');
+        }
+    });
+}
+
+module.exports.deleteOrganization = deleteOrganization;
+

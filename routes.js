@@ -22,6 +22,12 @@ router.post("/admin/users", adminController.addUser);
 router.get("/admin/edit", adminController.edit);
 router.put("/admin/:id", adminController.userUpdate);
 router.get("/admin/getUsers", adminController.getUsers);
+router.get("/admin/getAdmins", adminController.getAdmins);
+router.get("/admin/getOrganizations", adminController.getOrganizations);
+router.get("/admin/deleteUser/:id", adminController.deleteUser);
+router.get("/admin/deleteAdmin/:id", adminController.deleteAdmin);
+router.get("/admin/deleteOrganization/:id", adminController.deleteOrganization);
+
 
 //routes for user
 
@@ -38,13 +44,15 @@ router.put("/users/:id", userController.userUpdate);
 
 router.get("/organizations", organizationController.displayHome);
 router.get("/organizations/edit", organizationController.edit);
-router.get("/organizations/viewCart", organizationController.viewCart);
-router.get("/organizations/cart/:id", organizationController.getUser);
-router.get("/organizations/:id", organizationController.getOrganization);
+router.get("/organizations/viewCart/:id", organizationController.viewCart);
+router.get("/organizations/deleteCart/:id", organizationController.deleteCart);
+router.get("/organizations/viewRequest/:id", organizationController.viewRequest);
+router.get("/organizations/deleteRequest/:id", organizationController.deleteRequest);
+// router.get("/organizations/cart", organizationController.getCart);
+// router.get("/organizations/:id", organizationController.getOrganization);
 router.put("/organizations/:id", organizationController.organizationUpdate);
 router.get("/organizations/getUsers", organizationController.getOrganization);
 router.get("/organizations/profile/:id", organizationController.getUserprofile);
-
 router.post("/organizations/:id", organizationController.add_cart);
 
 
@@ -54,14 +62,16 @@ router.post("/organizations/:id", organizationController.add_cart);
 router.get('/student/login', passController.login);
 router.get('/student/logout', passController.logout);
 router.get('/google', passController.google);
-router.get('/google/redirect',passController.google,passController.redirect);
-router.get('/student/home',passController.home);
-router.get('/student/edit/:id',passController.edit);
-router.post('/student_edit/:id',passController.studentUpdate);
-router.get('/google/student',passController.profile);
-router.get('/student/vacancy',passController.viewVacancy);
-router.get('/student/send/cv/:id',passController.sendCv);
-router.post('/student/send/cv/:id',passController.sendCvDetails);
+router.get('/google/redirect', passController.google, passController.redirect);
+router.get('/student/home', passController.home);
+router.get('/student/edit/:id', passController.edit);
+router.post('/student_edit/:id', passController.studentUpdate);
+router.get('/google/student', passController.profile);
+router.get('/student/vacancy', passController.viewVacancy);
+router.get('/student/send/cv/:id', passController.sendCv);
+router.post('/student/send/cv/:id', passController.sendCvDetails);
+
+
 
 router.use(appController.pageNotFound);
 

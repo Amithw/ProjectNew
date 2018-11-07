@@ -1,16 +1,20 @@
+<html>
 <% include _header_style_links %>
 <h1>wel come</h1>
 
 <a href="./organizations/edit">Edit Profile</a>
 <a href="./organizations/getUsers">View Students</a><br>
-<a href="./organizations/viewCart">View Cart</a><br>
+
+<a id="cart" href="#" >View Cart</a>
+<a id="view" href="#" >View Request</a>
 
 <button type="button" class="btn btn-primary" id="logout">Logout</button>
 
 Organization Home
 
+
 <h1>organization Id:</h1>
-<h1 id="org_id"></h1>
+<div id="org_id"></div>
 <!-- <h1 id="nic"></h1>
 <h1 id="phone_number"></h1> -->
 <h1 id="email"></h1>
@@ -27,7 +31,7 @@ Organization Home
 
     var token = localStorage.getItem("token");
     var id;
-    var org_id;
+    
     if (!!token) {
         $.ajax({
             type: "GET",
@@ -36,16 +40,18 @@ Organization Home
             success: function (data) {
 
                 $("#org_id").text(data.student_id);
-                $("#nic").text(data.nic);
-                $("#phone_number").text(data.phone_number);
-                $("#email").text(data.email);
+                // $("#nic").text(data.nic);
+                // $("#phone_number").text(data.phone_number);
+                // $("#email").text(data.email);
                 // $("#photo").src(data.photo);
                 // ("#cv").text(data.cv);
                 //$("#technical_skills").text(data.technical_skills);
 
-                console.log(data);
-                id = data._id;
-                org_id = data.student_id;
+                id = data.student_id;
+                console.log(id);
+               
+                document.getElementById("cart").href ='./organizations/viewCart/' + id ;
+                document.getElementById("view").href ='./organizations/viewRequest/' + id ;
             },
             error: function () {
                 console.log("error from the method");
@@ -56,13 +62,13 @@ Organization Home
         window.location.replace("/");
     }
 
-     $("#logout").click(function () {
+    $("#logout").click(function () {
         localStorage.clear("token");
-        window.location.replace("login"); 
-     });
-
-      
+        window.location.replace("login");
+    });
 
 
-
+    
 </script>
+
+</html>

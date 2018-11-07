@@ -14,6 +14,7 @@ module.exports.displayHome = displayHome;
 
 authenticate = function (req, res, next) {
      var userData = req.body; 
+     console.log("userData");
     console.log(userData);
     User.findOne({ student_id: userData.student_id }, function (err, user) {
         if (err) {
@@ -37,7 +38,7 @@ authenticate = function (req, res, next) {
                 if (isMatched) {
                     const token = jwt.sign({ id: user._id }, SECRET_KEY);
                     res.status(200);
-                    res.send({ token: token, role: user.role });
+                    res.send({ token: token, role: user.role , id: user.student_id });
 
                 }
                 else {
