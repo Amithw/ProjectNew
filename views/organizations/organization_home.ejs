@@ -1,74 +1,240 @@
-<html>
+<!-- <html>
 <% include _header_style_links %>
-<h1>wel come</h1>
-
-<a href="./organizations/edit">Edit Profile</a>
-<a href="./organizations/getUsers">View Students</a><br>
-
-<a id="cart" href="#" >View Cart</a>
-<a id="view" href="#" >View Request</a>
-
-<button type="button" class="btn btn-primary" id="logout">Logout</button>
-
-Organization Home
+-->
 
 
-<h1>organization Id:</h1>
-<div id="org_id"></div>
+
+
+
+
+<!-- <button type="button" class="btn btn-primary" id="logout">Logout</button> -->
+
+<!-- Organization Home -->
+
+
+<!-- <h1>organization Id:</h1> -->
+<!-- <div id="org_id"></div> -->
 <!-- <h1 id="nic"></h1>
 <h1 id="phone_number"></h1> -->
-<h1 id="email"></h1>
+<!-- <h1 id="email"></h1> -->
 <!-- <img src="photo"  width="42" height="42"> -->
 <!-- <h1 id="cv"></h1> -->
 <!-- <h1 id="technical_skills"></h1> -->
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Organization</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <h1>wel come</h1>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a id="cart" href="#"><i class="glyphicon glyphicon-shopping-cart"></i>
+                    </a></li>
+
+                <li>
+                    <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
+                    </a>
+                <li>
+                    <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
+                </li>
+
+
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="./organizations/edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
+                            Profile</a>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25"><i class="fa fa-sign-out fa-fw"></i>
+                            Log Out</button>
+                    </li>
+                </ul>
+
+                <!-- /.dropdown-user -->
+
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a href="./organizations/getUsers"><i class="fa fa-users"></i> All Students</a>
+                        </li>
+
+                        <li>
+                            <a href="./organizations/addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
+                        </li>
 
 
 
-<% include _script_links %>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
 
-<script>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 id="name" class="page-header"></h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Profile
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-9">
 
-    var token = localStorage.getItem("token");
-    var id;
-    
-    if (!!token) {
-        $.ajax({
-            type: "GET",
-            url: `/users/${token}`,
-            dataType: "json",
-            success: function (data) {
+                                        
 
-                $("#org_id").text(data.student_id);
-                // $("#nic").text(data.nic);
-                // $("#phone_number").text(data.phone_number);
-                // $("#email").text(data.email);
-                // $("#photo").src(data.photo);
-                // ("#cv").text(data.cv);
-                //$("#technical_skills").text(data.technical_skills);
+                                            <div id="description"></div>
+                                       
+                                     
+                                            <label>Web Site</label><br>
+                                            <a id="web" href="#">   <div id="web"></div>
+                                            </a>
+                                       
+                                      
+                                            <label>Contact Number</label>
+                                            <div id="phone_number"></div>
+                                        
+                                        
+                                            <label>Email</label>
+                                            <div id="email"></div>
+                                        </div>
+                                       
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
 
-                id = data.student_id;
-                console.log(id);
-               
-                document.getElementById("cart").href ='./organizations/viewCart/' + id ;
-                document.getElementById("view").href ='./organizations/viewRequest/' + id ;
-            },
-            error: function () {
-                console.log("error from the method");
+                </div>
+
+                <!-- /#page-wrapper -->
+
+            </div>
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
+
+
+
+
+        <% include _script_links %>
+
+        <script>
+
+            var token = localStorage.getItem("token");
+            var id;
+            var web;
+            if (!!token) {
+                $.ajax({
+                    type: "GET",
+                    url: `/users/${token}`,
+                    dataType: "json",
+                    success: function (data) {
+
+                        $("#org_id").text(data.student_id);
+                        $("#name").text(data.name);
+                        $("#web").text(data.web);
+                        $("#phone_number").text(data.phone_number);
+                        $("#email").text(data.email);
+                        $("#description").text(data.description);
+
+                        id = data.student_id;
+                        web = data.web;
+                        console.log(id);
+
+                        document.getElementById("cart").href = './organizations/viewCart/' + id;
+                        document.getElementById("view").href = './organizations/viewRequest/' + id;
+                        document.getElementById("web").href = 'http://' + web;
+                    },
+                    error: function () {
+                        console.log("error from the method");
+                    }
+                });
+
+            } else {
+                window.location.replace("/");
             }
-        });
 
-    } else {
-        window.location.replace("/");
-    }
-
-    $("#logout").click(function () {
-        localStorage.clear("token");
-        window.location.replace("login");
-    });
+            $("#logout").click(function () {
+                localStorage.clear("token");
+                window.location.replace("login");
+            });
 
 
-    
-</script>
+
+        </script>
+</body>
 
 </html>

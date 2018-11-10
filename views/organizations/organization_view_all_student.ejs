@@ -10,24 +10,19 @@
 
 <body>
     <h1>organization Id:</h1>
-    <h1 id="org_id"></h1>
+    <h1 id="name"></h1>
 
   
-    <% practices.forEach(function (user) { %>
-    <br>
-    <% if(user.status=="Availabal"){ %>
+  
+    <% practices.forEach(function (practice) { %>
+        <br>
+        <%= practice.f_name %>
+        <%= practice.l_name %>
+        <img src="<%= practice.thumbnail %>" />
+        <a href ="<%= practice.cv %>">cv link</a>
+     
+        <% }) %>
 
-    <img src="<%= user.thumbnail %>" />
-    <%= user.f_name %>
-    <%= user.l_name %>
-    <%= user.id %>
-    <a href="<%= user.cv %>">cv link</a>
-    <a href="/organizations/profile/<%= user.id %>">view profile</a>
-    <!-- note you defined the field as Name not name -->
-    <% } %>
-    <% }) %>
-
-</body>
 <% include _script_links %>
 
 <script>
@@ -46,7 +41,7 @@
                 $("#email").text(data.email);
                 // $("#photo").src(data.photo);
                 // ("#cv").text(data.cv);
-                $("#technical_skills").text(data.technical_skills);
+                $("#name").text(data.name);
 
                 console.log(data);
 
@@ -66,5 +61,5 @@
     });
 
 </script>
-
+</body>
 </html>

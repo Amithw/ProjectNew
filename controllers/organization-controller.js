@@ -15,27 +15,35 @@ displayHome = function (req, res, next) {
 
 module.exports.displayHome = displayHome;
 
+getOrganization = function (req, res, next) {
+
+    Auth.find({}, function(err, data) {
+        // note that data is an array of objects, not a single object!
+        res.render('organization_view_all_student', {
+            user : req.user,
+            practices: data
+        });
+    });
+    // Auth.find({}, function (err, data) {
+
+    //     res.render('organization_view_all_student', {
+    //         user: req.user,
+    //         practices: data
+    //     });
+    //     //    console.log(data);
+    //     //console.log("user");
+    // });
+
+
+}
+module.exports.getOrganization = getOrganization;
+
 edit = function (req, res, next) {
     res.render("organization_edit");
 }
 module.exports.edit = edit;
 
-getOrganization = function (req, res, next) {
 
-
-    Auth.find({}, function (err, data) {
-
-        res.render('organization_view_all_student', {
-            user: req.user,
-            practices: data
-        });
-        //    console.log(data);
-        //console.log("user");
-    });
-
-
-}
-module.exports.getOrganization = getOrganization;
 
 organizationUpdate = function (req, res, next) {
     var id = req.params.id;
@@ -60,6 +68,35 @@ organizationUpdate = function (req, res, next) {
 
 module.exports.organizationUpdate = organizationUpdate;
 
+
+addJob = function (req, res, next) {
+    res.render("organization_add_job");
+}
+module.exports.addJob = addJob;
+
+
+createJob = function (req, res, next) {
+    var id = req.params.id;
+    var organizationData = req.body;
+    console.log("test organizationUpdate successfull");
+
+    User.findOneAndUpdate({ _id: id }, organizationData, { new: true }, function (err, user) {
+        if (err) {
+            res.status(400);
+            res.send({ errors: "Error occured when updating the organization." });
+            console.log("Error occured when updating the organization.");
+        }
+        if (user) {
+
+            res.status(200);
+            res.send(user);
+            console.log("update successful");
+
+        }
+    });
+}
+
+module.exports.createJob = createJob;
 
 
 getUserprofile = function (req, res, next) {

@@ -2,49 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <% include _header_style_links %>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Login</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+
+
 </head>
 
 <body>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <form>
-                    <div class="form-group">
-                        <label for="student-id">Student ID</label>
-                        <input type="text" class="form-control" id="student-id" placeholder="Enter ID" required>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" name="loginForm" autocomplete="on" id="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="student-id">Login Id</label>
+                                    <input type="text" class="form-control" id="student-id" placeholder="Enter ID" name="studentid"
+                                        required />
+                                    <p id="error"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password"
+                                        required />
+                                    <p id="erro" style="color:red"></p>
+                                </div>
+
 
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="login">Submit</button>
-                </form>
+
+                    <button type="button" class="btn btn-lg btn-success btn-block" id="login">Submit</button>
+                    </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+    </div>
     <% include _script_links %>
     <script>
+
         $("#login").click(function () {
+
             var username = $("#student-id").val();
             var password = $("#password").val();
-            
-            
-           
-           var credentials = {
+
+            var credentials = {
+
                 student_id: username,
-                password: password,
-                
+                password: password
             };
 
-           console.log(`${username} ${password}`);
 
-
+            console.log(`${username} ${password}`);
             $.ajax({
                 type: "POST",
                 url: "/login",
@@ -53,22 +90,35 @@
                 success: function (data) {
                     localStorage.setItem("token", data.token);
                     console.log(data.role);
-                    if(data.role=="organization"){
+                    if (data.role == "organization") {
                         window.location.replace("/organizations");
                     }
-                    else if(data.role=="admin"){
+                    else if (data.role == "admin") {
                         window.location.replace("/admin");
                     }
-                  
+
                 },
                 error: function () {
                     console.log("error from the method");
-                    window.location.replace("/login");
+                    document.getElementById("erro").innerHTML = "User Id or Password Incorrect";
+                    document.getElementById('form').reset();
+                    //window.location.replace("/login");
                 }
             });
         });
-    </script>
 
+    </script>
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
 

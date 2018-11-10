@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <% include _header_style_links %>
+</head>
+
+<body>
+    <form>
+
+        <div class="form-group">
+            <label for="job_title"> Job Title</label>
+            <input type="text" class="form-control" id="job_title" placeholder="Job Title" required>
+            <label for="technology">Technology</label>
+            <input type="text" class="form-control" id="technology" placeholder="Technology" required>
+            <label for="vacancy">Number of Vacancies</label>
+            <input type="text" class="form-control" id="vacancy_amount" placeholder="vacancy" required>
+            <label for="closing_date"> Closing Date </label>
+            <input type="date" class="form-control" id="closing_date" placeholder="Closing Date" required>
+
+        </div>
+
+        <button type="button" class="btn btn-primary" id="createJob">submit</button>
+    </form>
+
+
+    <% include _script_links %>
+    <script>
+
+        var token = localStorage.getItem("token");
+        var id;
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${token}`,
+                dataType: "json",
+                success: function (data) {
+
+                    $("#student_id").text(data.student_id);
+
+                    console.log(data);
+                    id = data._id;
+
+                },
+                error: function () {
+                    console.log("error from the method");
+                }
+            });
+
+        } else {
+            window.location.replace("/");
+        }
+
+        $("#createJob").click(function () {
+
+            var job_title = $("#job_title").val();
+            var technology = $("#technology").val();
+            var vacancy_amount = $("#vacancy_amount").val();
+            var closing_date = $("#closing_date").val();
+
+         
+
+            var createJob = {
+                job_title: job_title,
+                technology: technology,
+                vacancy_amount: vacancy_amount,
+                closing_date: closing_date
+                
+
+            };
+
+            console.log(`${job_title}  ${vacancy_amount} ${technology} ${closing_date} `);
+            $.ajax({
+                type: "put",
+                url: `/organizations/addJobs/${id}`,
+                dataType: "json",
+                data: createJob,
+                success: function (data) {
+
+                    window.location.replace("/organizations");
+                },
+                error: function () {
+                    console.log("error from the method");
+                    window.location.replace("/login");
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

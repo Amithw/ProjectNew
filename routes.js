@@ -44,18 +44,17 @@ router.put("/users/:id", userController.userUpdate);
 
 router.get("/organizations", organizationController.displayHome);
 router.get("/organizations/edit", organizationController.edit);
+router.post("/organizations/:id", organizationController.add_cart);
 router.get("/organizations/viewCart/:id", organizationController.viewCart);
 router.get("/organizations/deleteCart/:id", organizationController.deleteCart);
 router.get("/organizations/viewRequest/:id", organizationController.viewRequest);
 router.get("/organizations/deleteRequest/:id", organizationController.deleteRequest);
-// router.get("/organizations/cart", organizationController.getCart);
-// router.get("/organizations/:id", organizationController.getOrganization);
 router.put("/organizations/:id", organizationController.organizationUpdate);
 router.get("/organizations/getUsers", organizationController.getOrganization);
 router.get("/organizations/profile/:id", organizationController.getUserprofile);
 router.post("/organizations/:id", organizationController.add_cart);
-
-
+router.get("/organizations/addJobs", organizationController.addJob);
+router.put("/organizations/addJobs/:id", organizationController.createJob);
 
 
 // routes for passport

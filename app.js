@@ -11,6 +11,7 @@ const keys = require('./config/keys');
 const CookieSession = require('cookie-session');
 const passport = require('passport');
 const session = require('express-session');
+const expressValidator = require('express-validator');
 
 const app = express();
 
