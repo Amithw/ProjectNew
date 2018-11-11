@@ -17,22 +17,13 @@ module.exports.displayHome = displayHome;
 
 getOrganization = function (req, res, next) {
 
-    Auth.find({}, function(err, data) {
+    Auth.find({}, function (err, data) {
         // note that data is an array of objects, not a single object!
         res.render('organization_view_all_student', {
-            user : req.user,
+            user: req.user,
             practices: data
         });
     });
-    // Auth.find({}, function (err, data) {
-
-    //     res.render('organization_view_all_student', {
-    //         user: req.user,
-    //         practices: data
-    //     });
-    //     //    console.log(data);
-    //     //console.log("user");
-    // });
 
 
 }
