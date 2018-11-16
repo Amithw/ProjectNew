@@ -35,7 +35,7 @@
 <body>
 
     <div id="wrapper">
-        <h1>wel come</h1>
+        <h1>WELCOME</h1>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -51,7 +51,7 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a id="cart" href="#"><i class="glyphicon glyphicon-shopping-cart"></i>
+                    <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
                     </a></li>
 
                 <li>
@@ -66,7 +66,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="./organizations/edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
+                    <li><a href="./organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
                             Profile</a>
                     </li>
 
@@ -87,11 +87,11 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="./organizations/getUsers"><i class="fa fa-users"></i> All Students</a>
+                            <a href="./organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
                         </li>
 
                         <li>
-                            <a href="./organizations/addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
+                            <a href="./organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
                         </li>
 
 
@@ -196,8 +196,8 @@
                             web = data.web;
                             console.log(id);
 
-                            document.getElementById("cart").href = './organizations/viewCart/' + id;
-                            document.getElementById("view").href = './organizations/viewRequest/' + id;
+                            document.getElementById("cart").href = './organizations_viewCart/' + id;
+                            document.getElementById("view").href = './organizations_viewRequest/' + id;
                             document.getElementById("web").href = 'http://' + web;
                         },
                         error: function () {
@@ -211,7 +211,7 @@
 
                 $("#logout").click(function () {
                     localStorage.clear("token");
-                    window.location.replace("login");
+                    window.location.replace("/");
                 });
 
 

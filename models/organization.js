@@ -30,7 +30,7 @@ const OrgSchema = new mongoose.Schema({
 OrgSchema.pre("save", function (done) {
     console.log("user .pre works");
     var user = this;
-
+    console.log("err");
     bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
         if (err) {
             return done(err);
@@ -43,6 +43,7 @@ OrgSchema.pre("save", function (done) {
                 }
                 else {
                     console.log(hashedPassword);
+                    console.log("hashedPassword");
                     user.password = hashedPassword;
                     done();
                 }

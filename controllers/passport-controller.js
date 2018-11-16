@@ -88,7 +88,7 @@ studentUpdate = function (req, res, next) {
     console.log(id);
     Auth.findByIdAndUpdate(id, {
         $set: {
-            student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv, linkedin: req.body.linkedin, status: req.body.status, technical_skills: req.body.technical_skills,
+            student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv, linkedin: req.body.linkedin, status: req.body.status, technical_skills: req.body.technical_skills, description: req.body.description,
         }
     }, { new: true }, function (err, user) {
         if (err) {
@@ -147,7 +147,8 @@ newBox.save(function (err, Box) {
         res.status(401).send(err);
     } if (Box) {
         console.log("sucess");
-        res.status(200).send({ message: "Box sucessfully created" });
+    //    res.redirect('/student_vacancy');
+       res.status(200).send({ message: "Box sucessfully created" });
     }
 });
 }
