@@ -17,7 +17,7 @@ router.get("/studentLogin", appController.studentLogin);
 
 //routes for admin
 router.get("/admin", adminController.displayHome);
-router.post("/admin/addUser", adminController.addUsers);
+router.post("/admin/add_User", adminController.add_User);
 router.get("/admin_user", adminController.user);
 router.get("/admin/edit", adminController.edit);
 router.put("/admin/:id", adminController.userUpdate);

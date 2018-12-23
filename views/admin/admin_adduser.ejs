@@ -112,16 +112,17 @@
                         <div class="panel-body">
                             <div class="row1">
                                 <div class="col-lg-9">
+                                 
                                     <form>
                                         <div class="form-group">
                                             <label for="student-id">ID</label>
-                                            <input type="text" class="form-control" id="student-id" placeholder="Enter ID"
+                                            <input type="text" class="form-control" id="student-id"  placeholder="Enter ID"
                                                 required>
 
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" placeholder="Password"
+                                            <input type="password" class="form-control" id="password"  placeholder="Password"
                                                 required>
                                         </div>
                                         <div class="form-group" id="role">
@@ -135,7 +136,7 @@
 
                                         <button type="button" class="btn btn-primary" id="adduser">Adduser</button>
                                     </form>
-                          
+                              
 
                                 </div>
                             </div>
@@ -205,19 +206,19 @@
             var studentid = $("#student-id").val();
             var password = $("#password").val();
             var role = role_value;
-            //var name = $("#name").val();
+
 
             var adduser = {
                 student_id: studentid,
                 password: password,
                 role: role
-           
+
             }
 
             console.log(`${studentid} ${password} ${role}`);
             $.ajax({
                 type: "POST",
-                url: `/admin/addUser`,
+                url: `/admin/add_User`,
                 dataType: "json",
                 data: adduser,
                 success: function (data) {

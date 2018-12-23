@@ -5,7 +5,7 @@ const SALT_FACTOR = 10;
 const OrgSchema = new mongoose.Schema({
     student_id: { type: String, required: true, unique: true },
     name: { type: String },
-    password: { type: String, required: true, min: 5 },
+    password: { type: String, required: true, min: 4 },
     role: { type: String },
     phone_number: { type: Number,unique: true },
     email: { type: String,unique: true },
@@ -30,15 +30,17 @@ const OrgSchema = new mongoose.Schema({
 OrgSchema.pre("save", function (done) {
     console.log("user .pre works");
     var user = this;
-    console.log("err");
+    
     bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
         if (err) {
+            console.log("err");
             return done(err);
         }
         else {
 
             bcrypt.hash(user.password, salt, function (err, hashedPassword) {
                 if (err) {
+                    console.log("hash err");
                     return done(err);
                 }
                 else {

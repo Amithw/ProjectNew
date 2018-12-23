@@ -140,24 +140,29 @@ deleteOrganization = function (req, res, next) {
 
 module.exports.deleteOrganization = deleteOrganization;
 
-addUsers = function (req, res, next) {
+add_User = function (req, res, next) {
     console.log(req.body);
-    console.log("fgf");
+    console.log("add user");
     var newUser = new User(req.body);
 
     console.log(newUser);
 
     newUser.save(function (err, user) {
+ 
         if (err) {
-
-            console.log("err method");
+            
             res.status(401).send(err);
-        } if (user) {
+            console.log(err);
+            console.log("err method");
+        } 
+       if (user) {
             console.log("sucessfully");
             res.status(200).send({ message: "user sucessfully created" });
         }
     });
+ 
+
 
 }
 
-module.exports.addUsers = addUsers;
+module.exports.add_User = add_User;
