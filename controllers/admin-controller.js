@@ -1,5 +1,7 @@
 const User = require("../models/organization");
 const Auth = require("../models/auth");
+// var validator = require('validator');
+const { check, validationResult } = require('express-validator/check');
 
 // function for displaying  home
 
@@ -64,11 +66,15 @@ edit = function (req, res, next) {
 module.exports.edit = edit;
 
 userUpdate = function (req, res, next) {
+
+
     var id = req.params.id;
     var studentData = req.body;
 
     console.log(req.params.id);
-    User.findOneAndUpdate({ _id: id }, studentData, { new: true }, function (err, user) {
+    console.log(studentData.name);
+   
+        User.findOneAndUpdate({ _id: id }, studentData, { new: true }, function (err, user) {
         if (err) {
             res.status(400);
             res.send({ errors: "Error occured when updating the student." });
@@ -143,6 +149,19 @@ module.exports.deleteOrganization = deleteOrganization;
 add_User = function (req, res, next) {
     console.log(req.body);
     console.log("add user");
+
+    var userData=req.body;
+    User.findOne({ student_id: userData.studenid }, function (err, user) {
+        if (err) {
+            res.status(500);
+            res.send({ errors: "Error when creating the user record." });
+            return;
+        }
+        if (user) {
+            res.status(500);
+            res.send({ errors: "user is already exist." });
+            return;
+        }
     var newUser = new User(req.body);
 
     console.log(newUser);
@@ -160,9 +179,9 @@ add_User = function (req, res, next) {
             res.status(200).send({ message: "user sucessfully created" });
         }
     });
- 
 
 
-}
-
+    
+    }
+    )}
 module.exports.add_User = add_User;

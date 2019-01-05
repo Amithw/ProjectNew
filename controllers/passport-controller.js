@@ -36,7 +36,7 @@ module.exports.google = google;
 
 profile = function (req, res) {
     res.render('student_profile', { user: req.user });
-    console.log("email12345");
+    
     // res.send('You are logged in, this is your profile-' + req.user.username);
 };
 
@@ -44,7 +44,7 @@ module.exports.profile = profile;
 
 home = function (req, res) {
     res.render('student_home', { user: req.user });
-    console.log("email123");
+    // console.log("email123");
     // res.send('You are logged in, this is your profile-' + req.user.username);
 };
 
@@ -95,7 +95,14 @@ studentUpdate = function (req, res, next) {
             console.log(err);
             res.render("student_edit"); 
         }
+        if (user) {
 
+            res.status(200);
+            res.send(user);
+            console.log("update successful");
+            console.log(user);
+
+        }
 
     })
 }
@@ -153,3 +160,16 @@ newBox.save(function (err, Box) {
 });
 }
 module.exports.sendCvDetails = sendCvDetails;
+
+getOrganizations = function (req, res, next) {
+
+    User.find({ role: "organization" }, function (err, data) {
+        // note that data is an array of objects, not a single object!
+        res.render('student_getOrganization', {
+            user: req.user,
+            practices: data
+        });
+    });
+}
+
+module.exports.getOrganizations = getOrganizations;

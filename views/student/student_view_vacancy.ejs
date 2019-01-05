@@ -80,7 +80,7 @@
         <!-- /.navbar-top-links -->
 
         <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
+            <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
                 <ul class="nav" id="side-menu">
 
                    
@@ -108,7 +108,7 @@
                     <div class="col-lg-9">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Student Profile
+                                View Vacancies
                             </div>
                             <div class="panel-body">
                                 <div class="row1">
@@ -118,39 +118,69 @@
     <% practices.forEach(function (organization) { %>
     <br>
 
+   <table>
 
-
-    <%= organization.student_id %><br>
-
-    <% if(organization.name){  %><br>
-    <%= organization.name %><br>
+    <tr>
+       
+        <td><h3> <%= organization.name %></h3></td>
+    </tr>   
+    <tr>
+        <td>Job Title</td>
+        <td><h3><span class="label label-primary"><%= organization.job_title %></span></h3></td>
+    </tr>  
+    <tr>
+        <td>Number of Vacancy</td>
+        <td><h3><span class="label label-primary"><%= organization.vacancy %></span></h3></td>
+    </tr>  
+    <tr>
+        <td>Closing Date</td>
+        <td><h3><span class="label label-primary"><%= organization.closing_date %></span></h3></td>
+    </tr>  
+    <tr>
+        <td>Phone</td>
+        <td><h3><span class="label label-primary"><%= organization.phone_number %></span></h3></td>
+    </tr>  
+    <tr>
+        <td>E-Mail</td>
+        <td><h3><span class="label label-primary"><%= organization.email %></span></h3></td>
+    </tr>  
+    <tr>
+        <td>Description</td>
+        <td><h3><span class="label label-primary"><%= organization.description %></span></h3></td>
+    </tr>  
+    <tr>
+        <td><a href="https://<%= organization.web %>">View WebSite</a></td>
+        <td><a href="/student_send_cv/<%= organization.student_id %>">Apply</a></td>
+    </tr>  
+    <!-- <% if(organization.name){  %>
+   <br>
     <%  } %>
     <% if(organization.job_title){  %>
-        <%= organization.job_title %>
+        
         <%  } %><br>
     <% if(organization.phone_number){  %>
-    <%= organization.phone_number %>
+    
     <%  } %><br>
     <% if(organization.email){  %>
-    <%= organization.email %>
+    
     <%  } %><br>
     <% if(organization.vacancy){  %>
-    <%= organization.vacancy %>
+    
     <%  } %><br>
     <% if(organization.closing_date){  %>
-    <%= organization.closing_date %>
+    
     <%  } %><br>
     <% if(organization.description){  %>
-    <%= organization.description %>
+    
     <%  } %><br>
    
     <% if(organization.web){  %>
-    <a href="https://<%= organization.web %>">View WebSite</a>
-    <%  } %><br>
+    
+    <%  } %><br> -->
 
-    <a href="/student_send_cv/<%= organization.student_id %>">Apply</a>
+    
     <!-- <a href="http://www.google.com">View WebSite</a> -->
-
+</table>
     <% }) %>
 </div>
 </div>

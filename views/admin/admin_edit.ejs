@@ -22,7 +22,7 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,130 +33,137 @@
 </head>
 
 
-        <body> 
-                <div id="wrapper">
-                <h1>WELCOME</h1>
-                <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-            
-                    </div>
-                    <!-- /.navbar-header -->
-            
-                    <ul class="nav navbar-top-links navbar-right">
-            
-                        <a href="/admin"><i class="fa fa-home fa-fw"></i> </a>
+<body>
+    <div id="wrapper">
+        <h1 id="name" class="page-header"></h1>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+
+                <a href="/admin"><i class="fa fa-home fa-fw"></i></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                    <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="/admin/edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i>Edit Profile</a>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>Log
+                            Out</button>
+                    </li>
+                </ul>
+
+                <!-- /.dropdown-user -->
+
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a class="bttn-pill bttn-md bttn-primary" href="/admin_getUsers"><i class="fa fa-users"></i>
+                                All Students</a>
                         </li>
-            
-                        <li></li>
-                        <li></li>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="/admin/edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
-                                    Profile</a>
-                            </li>
-            
-                            <li class="divider"></li>
-                            <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
-                                    Log Out</button>
-                            </li>
-                        </ul>
-            
-                        <!-- /.dropdown-user -->
-            
-                        <!-- /.dropdown -->
+                        <li> <a class="bttn-pill bttn-md bttn-primary" href="/admin_getAdmins"><i class="fa fa-list fa-fw"></i>All
+                                Admins</a></li>
+                        <li><a class="bttn-pill bttn-md bttn-primary" href="/admin_getOrganizations"><i class="fa fa-building fa-fw"></i>All
+                                Organizations</a></li>
+                        <li> <a class="bttn-pill bttn-md bttn-primary" href="/admin_user"><i class="fa fa-user-plus fa-fw"></i>
+                                Add Users</a>
+                        </li>
+
+
+
                     </ul>
-                    <!-- /.navbar-top-links -->
-            
-                    <div class="navbar-default sidebar" role="navigation">
-                        <div class="sidebar-nav navbar-collapse">
-                            <ul class="nav" id="side-menu">
-            
-                                <li>
-                                    <a href="/admin_getUsers"><i class="fa fa-users"></i> All Students</a>
-                                </li>
-                                <li> <a href="/admin_getAdmins"><i class="fa fa-list fa-fw"></i>All Admins</a></li>
-                                <li><a href="/admin_getOrganizations"><i class="fa fa-building fa-fw"></i>All Organizations</a></li>
-                                <li> <a href="/admin_user"><i class="fa fa-user-plus fa-fw"></i> Add Users</a>
-                                </li>
-            
-            
-            
-                            </ul>
-                        </div>
-                        <!-- /.sidebar-collapse -->
-                    </div>
-                    <!-- /.navbar-static-side -->
-                </nav>
                 </div>
-                <div id="page-wrapper">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h-h1 id="name" class="page-header"></h-h1>
-                            </div>
-                            <div class="row">
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+    </div>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-6">
+                <h-h1 id="name" class="page-header"></h-h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="panel panel-default">
+                      
+                                <h3 class="panel-heading">
+                            Edit Admin Profile
+                            </h3>
+                        
+                        <div class="panel-body">
+                            <div class="row1">
                                 <div class="col-lg-9">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                          Edit  Admin Profile
+                                    <form role="form">
+
+                                        <div class="form-group">
+                                            <p style="color:red" id="error1"></p>
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" id="name2" placeholder="Full Name"
+                                                required />
+                                            <p style="color:red" id="name1"></p>
+                                            <label for="nic">NIC</label>
+                                            <input type="text" class="form-control" id="nic" placeholder="NIC" required />
+                                            <p id="nic"></p>
+                                            <label for="email">E-Mail</label>
+                                            <input type="email" class="form-control" id="email" placeholder="E-mail"
+                                                required />
+                                            <p id="email"></p>
+                                            <label for="phone">Phone Number</label>
+                                            <input type="number" class="form-control" id="phone_number" placeholder="Phone number"
+                                                required />
+                                            <p id="phone"></p>
+
                                         </div>
-                                        <div class="panel-body">
-                                            <div class="row1">
-                                                <div class="col-lg-9">
-    <form>
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-            <label for="nic">NIC</label>
-            <input type="text" class="form-control" id="nic" placeholder="NIC" required>
-            <label for="email">E-Mail</label>
-            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-            <label for="phone">Phone Number</label>
-            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-            <label for="technical_skills">Technical Skills</label>
-            <input type="text" class="form-control" id="technical_skills" placeholder="Technical Skills" required>
+                                        <button type="button"class="bttn-pill bttn-md bttn-primary" id="userUpdate">submit</button>
+                                    </form>
 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-12 -->
 
+                    </div>
+
+                    <!-- /#page-wrapper -->
+
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- /#wrapper -->
 
-        <button type="button" class="btn btn-primary" id="userUpdate">submit</button>
-    </form>
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
-</div>
-</div>
-</div>
-<!-- /.col-lg-12 -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-</div>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-<!-- /#page-wrapper -->
-
-</div>
-</div>
-</div>
-</div>
-<!-- /#wrapper -->
-
-<!-- jQuery -->
-<script src="../vendor/jquery/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<!-- <script src="../dist/js/sb-admin-2.js"></script> -->
+    <!-- Custom Theme JavaScript -->
+    <!-- <script src="../dist/js/sb-admin-2.js"></script> -->
     <% include _script_links %>
     <script>
 
@@ -174,13 +181,12 @@
                     $("#nic").text(data.nic);
                     $("#phone_number").text(data.phone_number);
                     $("#email").text(data.email);
-                    // $("#photo").src(data.photo);
-                    // ("#cv").text(data.cv);
-                    $("#technical_skills").text(data.technical_skills);
+
 
                     console.log(data);
                     id = data._id;
                     
+
 
                 },
                 error: function () {
@@ -191,46 +197,77 @@
         } else {
             window.location.replace("/");
         }
-        $("#logout").click(function () {
+     
+        $("#userUpdate").click(function () {
+
+            if ($("#name2").val() == "" || $("#nic").val() == "" || $("#phone_number").val() == "" || $("#email").val() == "") {
+
+                document.getElementById("error1").textContent = "Fill the all feild";
+            }
+
+
+            else {
+
+                var name = $("#name2").val();
+                var nic = $("#nic").val();
+                var phone_number = $("#phone_number").val();
+                var email = $("#email").val();
+
+
+                var userUpdate = {
+                    name: name,
+                    email: email,
+                    phone_number: phone_number,
+                    nic: nic
+
+                };
+
+                console.log(`${name}  ${email} ${phone_number} ${nic}`);
+                $.ajax({
+                    type: "put",
+                    url: `/admin/${id}`,
+                    dataType: "json",
+                    data: userUpdate,
+                    success: function (data) {
+
+                        window.location.replace("/admin");
+                    },
+                    error: function () {
+                        console.log("error from the method");
+                        // window.location.replace("/admin");
+
+                        if (name == null || name == "") {
+                            //  alert("Name can't be blank");  
+                            document.getElementById("name1").textContent = "Name can't be blank";
+
+                        }
+
+                        else if (nic == null || nic == "") {
+                            // alert("Password must be at least 6 characters long.");  
+                            document.getElementById("nic").textContent = "NIC can't be blank";
+
+                        }
+
+                        else if (phone_number == null || phone_number == "") {
+                            // alert("Password must be at least 6 characters long.");  
+                            document.getElementById("phone").textContent = "Phone Number can't be blank";
+
+                        }
+                        else if (email == null || email == "") {
+                            // alert("Password must be at least 6 characters long.");  
+                            document.getElementById("email").textContent = "Email can't be blank";
+
+                        }
+                    }
+                });
+            }
+        });
+
+   $("#logout").click(function () {
             localStorage.clear("token");
             window.location.replace("/");
         });
-        $("#userUpdate").click(function () {
 
-            var name = $("#name").val();
-            var nic = $("#nic").val();
-            var phone_number = $("#phone_number").val();
-            var email = $("#email").val();
-            var technical_skills = $("#technical_skills").val();
-
-            var userUpdate = {
-                name: name,
-                technical_skills: technical_skills,
-                email: email,
-                phone_number: phone_number,
-                nic: nic
-
-            };
-
-            console.log(`${name} ${technical_skills} ${email} ${phone_number} ${nic}`);
-            $.ajax({
-                type: "put",
-                url: `/admin/${id}`,
-                dataType: "json",
-                data: userUpdate,
-                success: function (data) {
-
-                    window.location.replace("/admin");
-                },
-                error: function () {
-                    console.log("error from the method");
-                    window.location.replace("/login");
-                }
-            });
-        });
-
-
-    
 
     </script>
 </body>

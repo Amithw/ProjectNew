@@ -81,7 +81,7 @@
                     <!-- /.navbar-top-links -->
         
                     <div class="navbar-default sidebar" role="navigation">
-                        <div class="sidebar-nav navbar-collapse">
+                      <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
                             <ul class="nav" id="side-menu">
         
                                 <li>
@@ -123,27 +123,30 @@
     <% practices.forEach(function (user) { %>
     <br>
 
-    <img src="<%= user.thumbnail %>" />
-    <%= user.f_name %>
-    <%= user.l_name %>
+    <img src="<%= user.thumbnail %>" /><br>
+    <%= user.f_name %><br>
+    <%= user.l_name %><br>
 
-    <%= user.id %> 
-    <!-- <%= user.skills %> 
-    <%= user.jobtitle %> 
+    <!-- <%= user.id %>  -->
+    <%= user.skills %> <br>
+    <%= user.jobtitle %> <br>
     <%= user.description %> 
-    <%= user.availability %>  -->
+    <!-- <%= user.availability %>  -->
      
 
     <a href="<%= user.cv %>">cv link</a>
 
     <form>
         <input type="hidden" id="s_id" value="<%= user.id %>"  />
-       
-        <input type="hidden" id="view" value="not_view" />
+        <input type="hidden" id="s_name" value="<%= user.f_name %> <%= user.l_name %>"  />
+        <input type="hidden" id="cv" value="<%= user.cv %>"  />
+        <input type="hidden" id="skills" value="<%= user.skills %>"  />
+        <input type="hidden" id="job_title" value="<%= user.jobtitle %>"  />
+        
 
-        <input type="button" id="add_cart" value="Add to Folder" />
+        <input type="button" id="add_cart" value="Select to Student" />
     </form> 
-
+  
 
     <!-- note you defined the field as Name not name -->
 
@@ -206,14 +209,20 @@
         $("#add_cart").click(function () {
            
             var s_id = $("#s_id").val();
-            var view = $("#view").val();
+            var view = "not view";
+            var s_name = $("#s_name").val();
+            var cv = $("#cv").val();
+            var job_title = $("#job_title").val();
             
             
 
             var add_cart = {
                 s_id: s_id,
                 view: view,
-                o_id:o_id
+                o_id:o_id,
+                s_name:s_name,
+                cv:cv,
+                job_title:job_title
                
             };
 

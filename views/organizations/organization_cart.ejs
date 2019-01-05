@@ -1,196 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 
-        <head>
+<head>
 
-                <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <meta name="description" content="">
-                <meta name="author" content="">
-            
-                <title>Professions</title>
-            
-                <!-- Bootstrap Core CSS -->
-                <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            
-                <!-- MetisMenu CSS -->
-                <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-            
-                <!-- Custom CSS -->
-                <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-            
-                <!-- Custom Fonts -->
-                <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-            
-                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                <!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Professions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
                 <![endif]-->
-            
-            </head>
+
+</head>
 
 <body>
 
-        <div id="wrapper">
-                <h1>WELCOME</h1>
-                <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-        
-                    </div>
-                    <!-- /.navbar-header -->
-        
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li>
-                            <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
-                            </a></li>
-        
-                        <li>
-                            <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
-                            </a>
-                        <li>
-                            <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
-                        </li>
-        
-        
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="../organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
-                                    Profile</a>
-                            </li>
-        
-                            <li class="divider"></li>
-                            <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
-                                    Log Out</button>
-                            </li>
-                        </ul>
-        
-                        <!-- /.dropdown-user -->
-        
-                        <!-- /.dropdown -->
-                    </ul>
-                    <!-- /.navbar-top-links -->
-        
-                    <div class="navbar-default sidebar" role="navigation">
-                        <div class="sidebar-nav navbar-collapse">
-                            <ul class="nav" id="side-menu">
-        
-                                <li>
-                                    <a href="../organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
-                                </li>
-        
-                                <li>
-                                    <a href="../organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
-                                </li>
-        
-        
-        
-                            </ul>
-                        </div>
-                        <!-- /.sidebar-collapse -->
-                    </div>
-                    <!-- /.navbar-static-side -->
-                </nav>
+    <div id="wrapper">
+        <h1>WELCOME</h1>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
             </div>
-            <div id="page-wrapper">
-                    <div class="row">
-                            <div class="col-lg-6">
-                                    <h-h1 id="name" class="page-header"></h-h1>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
+                    </a></li>
+
+                <li>
+                    <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
+                    </a>
+                <li>
+                    <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
+                </li>
+
+
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="../organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
+                            Profile</a>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
+                            Log Out</button>
+                    </li>
+                </ul>
+
+                <!-- /.dropdown-user -->
+
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+              
+                        <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a href="../organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
+                        </li>
+
+                        <li>
+                            <a href="../organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+    </div>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-6">
+                <h-h1 id="name" class="page-header"></h-h1>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Short Listed Candidates
+                        </div>
+                        <div class="panel-body">
+                            <div class="row1">
+                                <div class="col-lg-9">
                                     
+                                   
+                                    <% practice.forEach(function (orgainization) { %>
+                                        <br>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                    <%= orgainization.s_name %> 
+                                            </td>
+                                            <td>
+                                                    <%= orgainization.job_title %>
+                                            </td>
+                                            <td><a href="<%= orgainization.cv %>">CV Link</a></td>
+                                            <td>
+                                                    <a href="/organizations/deleteCart/<%= orgainization._id %>">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                        
+                                        
+                                        <!-- <%= orgainization.updated_at %> -->
+                                    
+                                        
+                                    
+                                      
+                                        <% }); %>
                                 </div>
-                        
-                        <div class="row">
-                        <div class="col-lg-9">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Short Listed Candidates
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row1">
-                                        <div class="col-lg-9">
-                                                <div id="org_id"></div>
-<div id="org_id"></div>
-
-</div></div></div></div></div></div></div></div>
-<!-- jQuery -->
-<script src="../vendor/jquery/jquery.min.js"></script>
-            
-<!-- Bootstrap Core JavaScript -->
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<!-- <script src="../dist/js/sb-admin-2.js"></script> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<% practices.forEach(function (orgainization) { %>
-<br>
 
-<%= orgainization.o_id %>
-<%= orgainization.s_id %>
-<%= orgainization.cv %>
 
-<a href ="/organizations/deleteCart/<%= orgainization._id %>">Delete</a>
-<% }) %>
+   
+    
+    <% include _script_links %>
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
-<% include _script_links %>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<script>
-    var token = localStorage.getItem("token");
-    var id;
-    if (!!token) {
-        $.ajax({
-            type: "GET",
-            url: `/users/${token}`,
-            dataType: "json",
-            success: function (data) {
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-                $("#org_id").text(data.student_id);
-                $("#nic").text(data.nic);
-                $("#phone_number").text(data.phone_number);
-                $("#email").text(data.email);
-                // $("#photo").src(data.photo);
-                // ("#cv").text(data.cv);
-                $("#technical_skills").text(data.technical_skills);
+    <!-- Custom Theme JavaScript -->
+    <!-- <script src="../dist/js/sb-admin-2.js"></script> -->
+    <script>
+        var token = localStorage.getItem("token");
+        var id;
+        if (!!token) {
+            $.ajax({
+                type: "GET",
+                url: `/users/${token}`,
+                dataType: "json",
+                success: function (data) {
 
-                console.log(data);
-                id = data._id;
-                org_id=data.student_id;
-                    
-                            console.log(id);
+                    $("#org_id").text(data.student_id);
+                    $("#nic").text(data.nic);
+                    $("#phone_number").text(data.phone_number);
+                    $("#email").text(data.email);
+                    // $("#photo").src(data.photo);
+                    // ("#cv").text(data.cv);
+                    $("#technical_skills").text(data.technical_skills);
 
-                          
-                            document.getElementById("view").href = '../organizations_viewRequest/' + org_id;
-            },
-            error: function () {
-                console.log("error from the method");
-            }
+                    console.log(data);
+                    id = data._id;
+                    org_id = data.student_id;
+
+                    console.log(id);
+
+
+                    document.getElementById("view").href = '../organizations_viewRequest/' + org_id;
+                },
+                error: function () {
+                    console.log("error from the method");
+                }
+            });
+
+        } else {
+            window.location.replace("/");
+        }
+
+        $("#logout").click(function () {
+            localStorage.clear("token");
+            window.location.replace("/");
         });
 
-     } else {
-                    window.location.replace("/");
-                }
-
-                $("#logout").click(function () {
-                    localStorage.clear("token");
-                    window.location.replace("/");
-                });
-
-  
 
 
-</script>
-</body></html>
+
+    </script>
+</body>
+
+</html>

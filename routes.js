@@ -69,7 +69,7 @@ router.get('/google/student', passController.profile);
 router.get('/student_vacancy', passController.viewVacancy);
 router.get('/student_send_cv/:id', passController.sendCv);
 router.post('/student_send_cv/:id', passController.sendCvDetails);
-
+router.get("/student/getOrganization", passController.getOrganizations);
 
 
 router.use(appController.pageNotFound);

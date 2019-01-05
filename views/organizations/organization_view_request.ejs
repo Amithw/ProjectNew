@@ -83,7 +83,7 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
                     <ul class="nav" id="side-menu">
 
                         <li>
@@ -105,8 +105,8 @@
     </div>
 
 
-
-
+    
+    
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-6">
@@ -124,131 +124,80 @@
                             <div class="row1">
                                 <div class="col-lg-9">
                                     <div id="org_id"></div>
-                                    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                                   
+                                    <div class="scrol_bar">
 
 
 
-
-
-                                    <!-- <div class="row">
-        <% practices.forEach(function (orgainization) { %>
-            <br>
-  <div class="column" style="background-color:#ddd;">
-    <h5>First Name</h5>
-    <p><%= orgainization.f_name %></p>
-  </div>
-  <div class="column"style="background-color:#ddd;" >
-    <h5>Last name</h5>
-    <p><%= orgainization.l_name %></p>
-  </div>
-</div>
-
-
-  <div class="column" style="background-color:#ddd;" >
-    <h5>Job Title</h5>
-    <p><%= orgainization.job_title %></p>
-  </div>
-  <div class="column" style="background-color:#ddd;">
-    <h5>Contact Number</h5>
-    <p><%= orgainization.phone_number %></p>
-  </div>
-  <div class="column" style="background-color:#ddd;">
-        <h5>Email</h5>
-        <p><%= orgainization.email %></p>
-      </div>
-      <div class="column" style="background-color:#ddd;">
-            <h5>Skills</h5>
-            <p><%= orgainization.skills %></p>
-          </div>
-          <div class="column" style="background-color:#ddd;">
-                <h5>CV</h5>
-                <p><%= orgainization.cv %></p>
-              </div>
-              <div class="column" style="background-color:#ddd;">
-                    <h5>Delete</h5>
-                    <p><a href ="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a></p>
-                  </div>
-<% }) %> -->
-                                    <% practices.forEach(function (orgainization) { %>
-                                    <table width=550px>
+                                        <% practices.forEach(function (orgainization) { %>
+                                        <table width=550px>
 
 
 
-                                        <tr>
-                                            <td>
-                                                <h2>
-                                                    <%= orgainization.f_name %>
-                                                    <%= orgainization.l_name %>
-                                                </h2>
-                                            </td>
-                                            <td>
-                                                <h5>
-                                                    <%= orgainization.job_title %>
-                                                </h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <p>
-                                                    <%= orgainization.skills %>
-                                                </p>
-                                            </td>
-                                            <td>
+                                            <tr>
+                                                <td>
+                                                    <h2>
+                                                        <%= orgainization.f_name %>
+                                                        <%= orgainization.l_name %>
+                                                    </h2>
+                                                </td>
+                                                <td>
+                                                    <h5>
+                                                        <%= orgainization.job_title %>
+                                                    </h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <%= orgainization.skills %>
+                                                    </p>
+                                                </td>
+                                                <td>
 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <p>
-                                                    <%= orgainization.phone_number %>
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p>
-                                                    <%= orgainization.email %>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <p>
-                                                    <%= orgainization.cv %>
-                                                </p>
-                                            </td>
-                                            <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <%= orgainization.phone_number %>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <%= orgainization.email %>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <%= orgainization.cv %>
+                                                    </p>
+                                                </td>
+                                                <td>
 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
 
-                                            </td>
-                                            <td>
-                                                <p><a href="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a></p>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                                <td>
+                                                    <p><a href="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a></p>
+                                                </td>
+                                            </tr>
 
 
-                                    </table><br>
-                                    <% }) %>
+                                        </table><br>
+                                        <% }) %>
 
-                                    ///////////////////////////////////////////////////////////////////////////////////////////////////
-                                    /////////////////////////////
 
-                                    <!-- <% practices.forEach(function (orgainization) { %>
-<br>
+                                    
 
-<%= orgainization.f_name %>
-<%= orgainization.l_name %>
-<%= orgainization.job_title %>
-<%= orgainization.phone_number %>
-<%= orgainization.email %>
-<%= orgainization.skills %>
-<%= orgainization.cv %>
-
-<a href ="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a>
-<% }) %> -->
-
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -271,6 +220,8 @@
     <!-- Custom Theme JavaScript -->
     <!-- <script src="../dist/js/sb-admin-2.js"></script> -->
     <% include _script_links %>
+
+
 
     <script>
         var token = localStorage.getItem("token");

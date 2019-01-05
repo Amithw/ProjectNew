@@ -10,13 +10,8 @@ displayHome = function (req, res, next) {
 
 module.exports.displayHome = displayHome;
 
-
-
 authenticate = function (req, res, next) {
     var userData = req.body;
-
-
-
 
     console.log("userData");
     console.log(userData);
@@ -28,7 +23,7 @@ authenticate = function (req, res, next) {
             console.log("err");
 
             res.status(403);
-            res.send({ error: "invalid username or password" });
+            res.send({ error: "invalid userId or password" });
 
 
         }
@@ -36,6 +31,7 @@ authenticate = function (req, res, next) {
             user.checkPassword(userData.password, function (err, isMatched) {
                 console.log(isMatched);
                 if (err) {
+                    console.log("err1");
                     res.status(500).send({ error: "internal server error" });
                     return next(err);
                 }

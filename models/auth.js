@@ -12,7 +12,7 @@ const authSchema = new mongoose.Schema({
     phone_number: { type: Number },
     email_address: { type: Object },
     cv: { type: String },
-    
+    linkedin: { type: String },
     technical_skills: { type: [String] },
     university:{ type: String },
     description:{ type: String },

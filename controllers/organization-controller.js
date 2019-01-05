@@ -131,14 +131,17 @@ module.exports.add_cart = add_cart;
 
 viewCart = function (req, res, next) {
     id = req.params.id;
-
+    console.log(id);
     Cart.find({ o_id: id }, function (err, cartData) {
 
         res.render('organization_cart', {
             user: req.user,
-            practices: cartData
+            practice: cartData
         });
         console.log(cartData);
+        console.log("cartData");
+       
+        
     });
 }
 module.exports.viewCart = viewCart;
@@ -146,7 +149,7 @@ module.exports.viewCart = viewCart;
 getUser = function (req, res, next) {
     var id = req.params.id;
     var cartData = req.body;
-    console.log(cartData);
+    // console.log(cartData);
     jwt.verify(id, SECRET_KEY, function (err, decode) {
         console.log(decode.id);
         Cart.find({ o_id: decode.id }, function (err, orgainization) {

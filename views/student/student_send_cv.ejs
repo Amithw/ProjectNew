@@ -82,7 +82,7 @@
         <!-- /.navbar-top-links -->
 
         <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
                 <ul class="nav" id="side-menu">
 
                    
@@ -138,7 +138,7 @@
         <label for="lable-control">E-Mail </label><br>
         <input type="email" class="form-control" id="email" value="<%= user.email %>" required /><br>
 
-        <input type="button" class="btn btn-primary" id="sendCv" value="Submit">
+        <input type="button" class="btn btn-primary" id="sendCv" value="Send">
 
     </form>
 
@@ -183,6 +183,7 @@
                 success: function (data) {
 
                     console.log(data);
+                    window.location.replace("../google/student");
                 },
                 error: function () {
                     console.log("error from the method");
