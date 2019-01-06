@@ -3,12 +3,12 @@ const User = require("../models/organization");
 const SECRET_KEY = "amith";
 // function for displaying  home
 
-displayHome = function (req, res, next) {
+// displayHome = function (req, res, next) {
 
-    res.render("user_home");
-}
+//     res.render("user_home");
+// }
 
-module.exports.displayHome = displayHome;
+// module.exports.displayHome = displayHome;
 
 authenticate = function (req, res, next) {
     var userData = req.body;
@@ -55,7 +55,7 @@ getUser = function (req, res, next) {
     var id = req.params.id;
     jwt.verify(id, SECRET_KEY, function (err, decode) {
         console.log(decode);
-        User.findById(decode.id, { student_id: 1, name: 1, role: 1, phone_number: 1, email: 1, web: 1, availability: 1, closing_date: 1, description: 1, job_title: 1, technology: 1, vacancy_amount: 1 }, function (err, user) {
+        User.findById(decode.id, { student_id: 1, name: 1, role: 1, phone_number: 1, email: 1, web: 1,nic:1, availability: 1, closing_date: 1, description: 1, job_title: 1, technology: 1, vacancy_amount: 1 }, function (err, user) {
             if (err) {
                 res.status(400);
                 res.send({ error: "no user can be found" });
@@ -76,47 +76,47 @@ getUser = function (req, res, next) {
 
 module.exports.getUser = getUser;
 
-getUsers = function (req, res, next) {
+// getUsers = function (req, res, next) {
 
-    User.find({}, function (err, data) {
+//     User.find({}, function (err, data) {
 
-        res.render('user_all', {
-            user: req.user,
-            practices: data
-        });
-    });
+//         res.render('user_all', {
+//             user: req.user,
+//             practices: data
+//         });
+//     });
 
-}
-module.exports.getUsers = getUsers;
+// }
+// module.exports.getUsers = getUsers;
 
-edit = function (req, res, next) {
-    res.render("user_edit");
-}
-module.exports.edit = edit;
+// edit = function (req, res, next) {
+//     res.render("user_edit");
+// }
+// module.exports.edit = edit;
 
 
-userUpdate = function (req, res, next) {
-    var id = req.params.id;
-    var studentData = req.body;
-    console.log("test userupdate successfull");
+// userUpdate = function (req, res, next) {
+//     var id = req.params.id;
+//     var studentData = req.body;
+//     console.log("test userupdate successfull");
 
-    User.findOneAndUpdate({ _id: id }, studentData, { new: true }, function (err, user) {
-        if (err) {
-            res.status(400);
-            res.send({ errors: "Error occured when updating the student." });
-            console.log("Error occured when updating the student.");
-        }
-        if (user) {
+//     User.findOneAndUpdate({ _id: id }, studentData, { new: true }, function (err, user) {
+//         if (err) {
+//             res.status(400);
+//             res.send({ errors: "Error occured when updating the student." });
+//             console.log("Error occured when updating the student.");
+//         }
+//         if (user) {
 
-            res.status(200);
-            res.send(user);
-            console.log("update successful");
+//             res.status(200);
+//             res.send(user);
+//             console.log("update successful");
 
-        }
-    });
-}
+//         }
+//     });
+// }
 
-module.exports.userUpdate = userUpdate;
+// module.exports.userUpdate = userUpdate;
 
 
 

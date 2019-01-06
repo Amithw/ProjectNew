@@ -22,7 +22,7 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
 <body>
 
     <div id="wrapper">
-        <h1>WELCOME</h1>
+        <h1 id="name" class="page-header"></h1>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -50,30 +50,27 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
-                    </a></li>
 
-                <li>
-                    <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
-                    </a>
-                <li>
-                    <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
-                </li>
+                <a class="bttn-pill bttn-md bttn-primary" id="cart" href="#"><i class="fa fa-folder fa-fw"></i></a></li>
 
 
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                <a class="bttn-pill bttn-md bttn-primary" id="view" href="#"><i class="fa fa-bell fa-fw"></i></a>
+
+                <a class="bttn-pill bttn-md bttn-primary" href="/organizations"><i class="fa fa-home fa-fw"></i></a>
+
+
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="../organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
-                            Profile</a>
-                    </li>
+                    <li> <a href="../organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
+                            Profile</a></li>
 
-                    <li class="divider"></li>
-                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
-                            Log Out</button>
-                    </li>
+
+                    <!-- <li class="divider"></li> -->
+                    <li> <button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
+                            Log Out</button></li>
+
                 </ul>
 
                 <!-- /.dropdown-user -->
@@ -87,11 +84,13 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="../organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="../organizations_getUsers"><i class="fa fa-users"></i>
+                                All Students</a>
                         </li>
 
                         <li>
-                            <a href="../organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="../organizations_addJobs"><i class="fa fa-edit fa-fw"></i>
+                                Add Jobs</a>
                         </li>
 
 
@@ -105,8 +104,8 @@
     </div>
 
 
-    
-    
+
+
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-6">
@@ -118,23 +117,19 @@
                 <div class="col-lg-9">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Candidates Requests
+                            <h3> Candidates Requests</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row1">
                                 <div class="col-lg-9">
-                                    <div id="org_id"></div>
 
-
-                                   
                                     <div class="scrol_bar">
 
-
-
                                         <% practices.forEach(function (orgainization) { %>
-                                        <table width=550px>
 
 
+
+                                        <table>
 
                                             <tr>
                                                 <td>
@@ -145,57 +140,34 @@
                                                 </td>
                                                 <td>
                                                     <h5>
-                                                        <%= orgainization.job_title %>
+
                                                     </h5>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <p>
-                                                        <%= orgainization.skills %>
-                                                    </p>
-                                                </td>
-                                                <td>
+                                                        <%= orgainization.job_title %><br>
+                                                         <%= orgainization.skills %><br>
+                                                         <%= orgainization.phone_number %><br>
+                                                         <%= orgainization.email %><br>
+                                                        <a href="<%= orgainization.cv %>" >My CV</a><br>
+                                                        <p><a class="bttn-pill bttn-md bttn-primary" href="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a></p>
 
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <%= orgainization.phone_number %>
+
                                                     </p>
                                                 </td>
                                                 <td>
                                                     <p>
-                                                        <%= orgainization.email %>
+                                                                                                                                          
                                                     </p>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <%= orgainization.cv %>
-                                                    </p>
-                                                </td>
-                                                <td>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-
-                                                </td>
-                                                <td>
-                                                    <p><a href="/organizations/deleteRequest/<%= orgainization._id %>">Delete</a></p>
-                                                </td>
-                                            </tr>
-
-
                                         </table><br>
                                         <% }) %>
 
 
-                                    
+
 
                                     </div>
                                 </div>
@@ -240,7 +212,7 @@
                     // $("#photo").src(data.photo);
                     // ("#cv").text(data.cv);
                     $("#technical_skills").text(data.technical_skills);
-
+                    $("#name").text(data.name);
                     console.log(data);
                     id = data._id;
                     org_id = data.student_id;

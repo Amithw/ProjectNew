@@ -22,7 +22,7 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
 <body>
 
     <div id="wrapper">
-        <h1>WELCOME</h1>
+        <h1 id="name" class="page-header"></h1>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -50,29 +50,26 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
-                    </a></li>
+               
+                    <a class="bttn-pill bttn-md bttn-primary" id="cart" href="#"><i class="fa fa-folder fa-fw"></i></a>
 
-                <li>
-                    <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
-                    </a>
-                <li>
-                    <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
-                </li>
+                
+                    <a class="bttn-pill bttn-md bttn-primary" id="view" href="#"><i class="fa fa-bell fa-fw"></i></a>
+               
+                    <a class="bttn-pill bttn-md bttn-primary" href="/organizations"><i class="fa fa-home fa-fw"></i></a>
+               
 
 
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none"><i class="fa fa-user fa-fw"></i><i
+                        class="fa fa-caret-down"></i></a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="./organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
+                    <li><a href="./organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i>Edit
                             Profile</a>
                     </li>
 
                     <li class="divider"></li>
-                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
-                            Log Out</button>
+                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>Log
+                            Out</button>
                     </li>
                 </ul>
 
@@ -83,15 +80,17 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-              <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="./organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="./organizations_getUsers"><i class="fa fa-users"></i>
+                                All Students</a>
                         </li>
 
                         <li>
-                            <a href="./organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="./organizations_addJobs"><i class="fa fa-edit fa-fw"></i>
+                                Add Jobs</a>
                         </li>
 
 
@@ -102,44 +101,45 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+    </div>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-6">
-                    <h-h1 id="name" class="page-header"></h-h1>
+
                 </div>
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Profile
+                               <h3> Profile</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row1">
                                     <div class="col-lg-9">
+<br>
+                                        <table>
+                                            <tr>
+                                                <td>Phone Number</td>
+                                                <td><div id="phone_number"></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td> <div id="email"></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Web Site</td>
+                                                <td><a id="web" href="#">
+                                                    <div id="web">
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Description</td>
+                                                <td> <div id="description"></div></td>
+                                            </tr>
+                                            
+                                        </table>
 
-
-                                        <div >
-                                            <div id="description"></div>
-                                        </div>
-                                        <br>
-                                        
-                                        <div>
-
-                                            <a id="web" href="#">
-                                                <div id="web">
-                                            </a>
-                                        </div>
                                     
-                                        <br>
-                                        <div >
-
-                                            <div id="phone_number"></div>
-                                        </div>
-                                        <br>
-                                        <div >
-                                            <div id="email"></div>
-                                        </div>
 
 
                                     </div>
@@ -184,21 +184,24 @@
                         url: `/users/${token}`,
                         dataType: "json",
                         success: function (data) {
+                            if (data.role == "organization") {
+                                $("#org_id").text(data.student_id);
+                                $("#name").text(data.name);
+                                $("#web").text(data.web);
+                                $("#phone_number").text(data.phone_number);
+                                $("#email").text(data.email);
+                                $("#description").text(data.description);
 
-                            $("#org_id").text(data.student_id);
-                            $("#name").text(data.name);
-                            $("#web").text(data.web);
-                            $("#phone_number").text(data.phone_number);
-                            $("#email").text(data.email);
-                            $("#description").text(data.description);
+                                id = data.student_id;
+                                web = data.web;
+                                console.log(id);
 
-                            id = data.student_id;
-                            web = data.web;
-                            console.log(id);
-
-                            document.getElementById("cart").href = './organizations_viewCart/' + id;
-                            document.getElementById("view").href = './organizations_viewRequest/' + id;
-                            document.getElementById("web").href = 'http://' + web;
+                                document.getElementById("cart").href = './organizations_viewCart/' + id;
+                                document.getElementById("view").href = './organizations_viewRequest/' + id;
+                                document.getElementById("web").href = 'http://' + web;
+                            } else {
+                                window.location.replace("/");
+                            }
                         },
                         error: function () {
                             console.log("error from the method");

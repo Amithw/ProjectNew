@@ -1,229 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 
-        <head>
+<head>
 
-                <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <meta name="description" content="">
-                <meta name="author" content="">
-            
-                <title>Professions</title>
-            
-                <!-- Bootstrap Core CSS -->
-                <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            
-                <!-- MetisMenu CSS -->
-                <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-            
-                <!-- Custom CSS -->
-                <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-            
-                <!-- Custom Fonts -->
-                <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-            
-                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                <!--[if lt IE 9]>
-                    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-                <![endif]-->
-            
-            </head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Organization</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
 
 <body>
 
-        <div id="wrapper">
-                <h1>WELCOME</h1>
-                <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-        
-                    </div>
-                    <!-- /.navbar-header -->
-        
-                    <ul class="nav navbar-top-links navbar-right">
+    <div id="wrapper">
+        <h1 id="name" class="page-header"></h1>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <a class="bttn-pill bttn-md bttn-primary" id="cart" href="#"><i class="fa fa-folder fa-fw"></i></a>
+
+
+                <a class="bttn-pill bttn-md bttn-primary" id="view" href="#"><i class="fa fa-bell fa-fw"></i></a>
+
+                <a class="bttn-pill bttn-md bttn-primary" href="/organizations"><i class="fa fa-home fa-fw"></i></a>
+
+
+
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none"><i
+                        class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="./organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i>Edit
+                            Profile</a>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>Log
+                            Out</button>
+                    </li>
+                </ul>
+
+                <!-- /.dropdown-user -->
+
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                    <ul class="nav" id="side-menu">
+
                         <li>
-                            <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
-                            </a></li>
-        
-                        <li>
-                            <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
-                            </a>
-                        <li>
-                            <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="./organizations_getUsers"><i class="fa fa-users"></i>
+                                All Students</a>
                         </li>
-        
-        
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="./organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
-                                    Profile</a>
-                            </li>
-        
-                            <li class="divider"></li>
-                            <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
-                                    Log Out</button>
-                            </li>
-                        </ul>
-        
-                        <!-- /.dropdown-user -->
-        
-                        <!-- /.dropdown -->
+
+                        <li>
+                            <a class="bttn-pill bttn-md bttn-primary" href="./organizations_addJobs"><i class="fa fa-edit fa-fw"></i>
+                                Add Jobs</a>
+                        </li>
+
+
+
                     </ul>
-                    <!-- /.navbar-top-links -->
-        
-                    <div class="navbar-default sidebar" role="navigation">
-                            <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
-                            <ul class="nav" id="side-menu">
-        
-                                <li>
-                                    <a href="./organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
-                                </li>
-        
-                                <li>
-                                    <a href="./organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
-                                </li>
-        
-        
-        
-                            </ul>
-                        </div>
-                        <!-- /.sidebar-collapse -->
-                    </div>
-                    <!-- /.navbar-static-side -->
-                </nav>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+    </div>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-6">
+                <h-h1 id="name" class="page-header"></h-h1>
             </div>
 
-                <div id="page-wrapper">
-                        <div class="row">
-                                <div class="col-lg-6">
-                                        <h-h1 id="name" class="page-header"></h-h1>
-                                    </div>
-                            
-                            <div class="row">
-                            <div class="col-lg-9">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        EDIT COMPANY PROFILE
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row1">
-                                            <div class="col-lg-9">
-                                                <div class= "row2">
-                                                <form role="form">
-                                                    <div class="form-group">
-                                                        <label>Organization name</label>
-                                                        <input type="text" class="form-control" id="o_name" placeholder="Organization Name" required>                                       
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Organization Web Site</label>
-                                                        <input type="text" class="form-control" id="web" placeholder="Web Site" required>                                      
-                                                    </div>
-                                                   
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="E-mail" required>                                   
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Contact Number</label>
-                                                        <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Description</label>
-                                                        <input type="text" class="form-control" id="description" placeholder="Description" required> 
-                                                    </div>
-                                                    <div class="form-group">	
-                                                    <br>
-                                                    <button type="button" class="btn btn-primary" id="organizationUpdate">submit</button>
-                                                    
-                                                    </div>
-                                                    </form>
-                                                </div></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <!-- /.col-lg-12 -->
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>EDIT COMPANY PROFILE</h3>
                         </div>
-            
-            
-                </div></div>
-                <!-- /#wrapper -->
-            
-                <!-- jQuery -->
-                <script src="../vendor/jquery/jquery.min.js"></script>
-            
-                <!-- Bootstrap Core JavaScript -->
-                <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-            
-                <!-- Metis Menu Plugin JavaScript -->
-                <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-            
-                <!-- Custom Theme JavaScript -->
-                <!-- <script src="../dist/js/sb-admin-2.js"></script> -->
-    <!-- <form>
+                        <div class="panel-body">
+                            <div class="row1">
+                                <div class="col-lg-9">
+                                    <div class="row2">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <p style="color:red" id="error1"></p>
+                                                <label>Organization name</label>
+                                                <input type="text" class="form-control" id="o_name" placeholder="Organization Name"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Organization Web Site</label>
+                                                <input type="text" class="form-control" id="web" placeholder="Web Site"
+                                                    required>
+                                            </div>
 
-        <div class="form-group">
-            <label for="name">Organization Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Organization Name" required>
-            <label for="email">Organization E-Mail</label>
-            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-            <label for="phone">Organization Contact Number</label>
-            <input type="text" class="form-control" id="phone_number" placeholder="Phone number" required>
-            <label for="phone">Web Site </label>
-            <input type="text" class="form-control" id="web" placeholder="Web Site" required>
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Description" required>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="E-mail"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Contact Number</label>
+                                                <input type="text" class="form-control" id="phone_number" placeholder="Phone number"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <input type="text" class="form-control" id="description" placeholder="Description"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <br>
+                                                <button type="button" class="bttn-pill bttn-md bttn-primary" id="organizationUpdate">submit</button>
 
-
-
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
 
-        <button type="button" class="btn btn-primary" id="organizationUpdate">submit</button>
-    </form> -->
+
+    </div>
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
 
-    <!-- <% include _script_links %> -->
     <script>
+
+        function ValidateEmail(email) {
+
+            if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+                return (true)
+            }
+
+            return (false)
+        }
 
         var token = localStorage.getItem("token");
         var id;
         var org_id;
-        
+
         if (!!token) {
             $.ajax({
                 type: "GET",
                 url: `/users/${token}`,
                 dataType: "json",
                 success: function (data) {
+                    if (data.role == "organization") {
+                        $("#student_id").text(data.student_id);
+                        $("#name").text(data.name);
+                        $("#web").text(data.web);
+                        $("#phone_number").text(data.phone_number);
+                        $("#email").text(data.email);
+                        $("#description").text(data.description);
 
-                    $("#student_id").text(data.student_id);
-                    $("#name").text(data.name);
-                    $("#web").text(data.web);
-                    $("#phone_number").text(data.phone_number);
-                    $("#email").text(data.email);
-                    $("#description").text(data.description);
+                        console.log(data);
+                        id = data._id;
+                        org_id = data.student_id;
 
-                    console.log(data);
-                    id = data._id;
-                    org_id=data.student_id;
-                    
-                            console.log(id);
+                        console.log(id);
 
-                            document.getElementById("cart").href = './organizations_viewCart/' + org_id;
-                            document.getElementById("view").href = './organizations_viewRequest/' + org_id;
-                           
+                        document.getElementById("cart").href = './organizations_viewCart/' + org_id;
+                        document.getElementById("view").href = './organizations_viewRequest/' + org_id;
+                    }
+                    else {
+                        window.location.replace("/");
+                    }
                 },
                 error: function () {
                     console.log("error from the method");
@@ -231,51 +226,79 @@
             });
 
         } else {
-                    window.location.replace("/");
-                }
+            window.location.replace("/");
+        }
 
-             
+
 
         $("#organizationUpdate").click(function () {
 
-            var name = $("#o_name").val();
-            var web = $("#web").val();
-            var phone_number = $("#phone_number").val();
-            var email = $("#email").val();
-            // var vacancy = $("#vacancy").val();
-            var description = $("#description").val();
+            if ($("#o_name").val() == "" || $("#web").val() == "" || $("#phone_number").val() == "" || $("#email").val() == "" || $("#description").val() == "") {
 
-            var organizationUpdate = {
-                name: name,
-                web: web,
-                phone_number: phone_number,
-                email: email,
-                // vacancy: vacancy,
-                description: description
+                document.getElementById("error1").textContent = "Fill the all feild";
+            }
 
-            };
+            else if (ValidateEmail($("#email").val())) {
+                alert("You have entered an invalid email address!");
+            }
+            else {
 
-            console.log(`${name} ${email} ${web} ${phone_number} ${description}`);
-            $.ajax({
-                type: "put",
-                url: `/organizations/${id}`,
-                dataType: "json",
-                data: organizationUpdate,
-                success: function (data) {
 
-                    window.location.replace("/organizations");
-                },
-                error: function () {
-                    console.log("error from the method");
-                    window.location.replace("/login");
+                var name = $("#o_name").val();
+                var web = $("#web").val();
+                var phone_number = $("#phone_number").val();
+                var email = $("#email").val();
+                var description = $("#description").val();
+
+                if (!(/^\d{10}$/.test(phone_number))) {
+                    alert("Invalid phone number; must be ten digits");
+                    number.focus()
+                    return false
+
                 }
-            });
+                
+                else if(!(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(web))){
+
+                    alert("Invalid URL");
+                    web.focus()
+                    return false
+
+                }
+
+                else {
+
+                var organizationUpdate = {
+                    name: name,
+                    web: web,
+                    phone_number: phone_number,
+                    email: email,
+                    description: description
+
+                };
+
+                console.log(`${name} ${email} ${web} ${phone_number} ${description}`);
+                $.ajax({
+                    type: "put",
+                    url: `/organizations/${id}`,
+                    dataType: "json",
+                    data: organizationUpdate,
+                    success: function (data) {
+
+                        window.location.replace("/organizations");
+                    },
+                    error: function () {
+                        console.log("error from the method");
+                        window.location.replace("/login");
+                    }
+                });
+            }
+        }
         });
 
-       $("#logout").click(function () {
-                    localStorage.clear("token");
-                    window.location.replace("/");
-                });
+        $("#logout").click(function () {
+            localStorage.clear("token");
+            window.location.replace("/");
+        });
 
 
     </script>

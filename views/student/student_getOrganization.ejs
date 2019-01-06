@@ -13,7 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- for button -->
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -54,12 +55,12 @@
 
             <ul class="nav navbar-top-links navbar-right">
 
-                <a href="/google/student"><i class="fa fa-home fa-fw"></i> </a>
+                <a class="bttn-pill bttn-md bttn-primary" href="/google/student"><i class="fa fa-home fa-fw"></i></a>
                 </li>
 
                 <li></li>
                 <li></li>
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
@@ -81,12 +82,14 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
                     <ul class="nav" id="side-menu">
 
 
-                        <li><a href="/student/getOrganization"><i class="fa fa-building fa-fw"></i>All Organizations</a></li>
-                        <li><a href="/student_vacancy"><i class="fa fa-search fa-fw"></i>View Vacancies</a></li>
+                        <li><a class="bttn-pill bttn-md bttn-primary" href="/student/getOrganization"><i class="fa fa-building fa-fw"></i>All
+                                Organizations</a></li>
+                        <li><a class="bttn-pill bttn-md bttn-primary" href="/student_vacancy"><i class="fa fa-search fa-fw"></i>View
+                                Vacancies</a></li>
                         </li>
 
 
@@ -109,43 +112,49 @@
                 <div class="col-lg-9">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Student Profile
+                            <h3> All Organizations</h3> 
                         </div>
                         <div class="panel-body">
                             <div class="row1">
                                 <div class="col-lg-9">
+                                    <div class="scrol_bar">
+
+                                        <% practices.forEach(function (organization) { %>
 
 
-                                    <% practices.forEach(function (organization) { %>
-                                      
-
-                                       <h3><% if(organization.name){  %>
-                                        <%= organization.name %></h3>
+                                        <h3>
+                                            <% if(organization.name){  %>
+                                            <%= organization.name %>
+                                        </h3>
                                         <%  } %>
 
-                                       <h4>
-                                        <% if(organization.phone_number){  %>
-                                             Phone:<span class="label label-primary"> <%= organization.phone_number %></span>
-                                        <%  } %><br><br>
-                                        <% if(organization.email){  %>
-                                            E-Mail: <span class="label label-primary"> <%= organization.email %></span>
-                                        <%  } %><br><br>
-                                       
-                                        Descrition:
-                                        <% if(organization.description){  %>
-                                            <span class="label label-primary"> <%= organization.description %></span>
-                                        <%  } %><br><br>
-                                       
-                                        <% if(organization.web){  %>
-                                        <a href="https://<%= organization.web %>">View WebSite</a>
-                                        <%  } %>
-                                        <br>
-                                    </h4> 
+                                        <h4>
+                                            <% if(organization.phone_number){  %>
+                                            Phone:<span class="label label-primary">
+                                                <%= organization.phone_number %></span>
+                                            <%  } %><br><br>
+                                            <% if(organization.email){  %>
+                                            E-Mail: <span class="label label-primary">
+                                                <%= organization.email %></span>
+                                            <%  } %><br><br>
 
-                                    
-                                   
+                                            Descrition:
+                                            <% if(organization.description){  %>
+                                            <span class="label label-primary">
+                                                <%= organization.description %></span>
+                                            <%  } %><br><br>
 
-                                    <% }) %>
+                                            <% if(organization.web){  %>
+                                            <a href="https://<%= organization.web %>">View WebSite</a>
+                                            <%  } %>
+                                            <br>
+                                        </h4>
+
+
+
+
+                                        <% }) %>
+                                    </div>
                                 </div>
                             </div>
                         </div>

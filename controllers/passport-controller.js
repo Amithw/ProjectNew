@@ -36,7 +36,7 @@ module.exports.google = google;
 
 profile = function (req, res) {
     res.render('student_profile', { user: req.user });
-    
+
     // res.send('You are logged in, this is your profile-' + req.user.username);
 };
 
@@ -88,12 +88,12 @@ studentUpdate = function (req, res, next) {
     console.log(id);
     Auth.findByIdAndUpdate(id, {
         $set: {
-            student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv, linkedin: req.body.linkedin, status: req.body.status, technical_skills: req.body.technical_skills, description: req.body.description,
+            student_id: req.body.student_id, f_name: req.body.f_name, l_name: req.body.l_name,job_title: req.body.job_title, phone_number: req.body.phone_number, university: req.body.university, cv: req.body.cv, linkedin: req.body.linkedin, status: req.body.status, technical_skills: req.body.technical_skills, description: req.body.description,
         }
     }, { new: true }, function (err, user) {
         if (err) {
             console.log(err);
-            res.render("student_edit"); 
+            res.render("student_edit");
         }
         if (user) {
 
@@ -112,12 +112,12 @@ module.exports.studentUpdate = studentUpdate;
 
 viewVacancy = function (req, res) {
 
-    User.find({role:"organization"}, function (err, data) {
+    User.find({ role: "organization" }, function (err, data) {
 
         res.render('student_view_vacancy', {
             user: req.user,
             practices: data
-    
+
         });
         console.log(data);
     });
@@ -128,36 +128,36 @@ viewVacancy = function (req, res) {
 
 module.exports.viewVacancy = viewVacancy;
 
-sendCv= function (req, res) {
+sendCv = function (req, res) {
 
     var id = req.params.id;
-    
-    console.log(id);
-    
 
-    res.render('student_send_cv', { user: req.user, id});
+    console.log(id);
+
+
+    res.render('student_send_cv', { user: req.user, id });
     console.log("edit page loading");
     // res.send('You are logged in, this is your profile-' + req.user.username);
 };
 
 module.exports.sendCv = sendCv;
 
-sendCvDetails = function (req, res) {   
- console.log(req.body);
-var newBox = new Box(req.body);
+sendCvDetails = function (req, res) {
+    console.log(req.body);
+    var newBox = new Box(req.body);
 
-console.log(newBox);
+    console.log(newBox);
 
-newBox.save(function (err, Box) {
-    if (err) {
-        console.log("err");
-        res.status(401).send(err);
-    } if (Box) {
-        console.log("sucess");
-    //    res.redirect('/student_vacancy');
-       res.status(200).send({ message: "Box sucessfully created" });
-    }
-});
+    newBox.save(function (err, Box) {
+        if (err) {
+            console.log("err");
+            res.status(401).send(err);
+        } if (Box) {
+            console.log("sucess");
+            //    res.redirect('/student_vacancy');
+            res.status(200).send({ message: "Box sucessfully created" });
+        }
+    });
 }
 module.exports.sendCvDetails = sendCvDetails;
 

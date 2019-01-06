@@ -9,7 +9,7 @@ const SECRET_KEY = "amith";
 
 
 displayHome = function (req, res, next) {
-
+  
     res.render("organization_home");
 }
 

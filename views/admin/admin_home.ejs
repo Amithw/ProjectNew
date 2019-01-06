@@ -52,8 +52,8 @@
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
 
-                <a href="/admin"><i class="fa fa-home fa-fw"></i></a>
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                <a class="bttn-pill bttn-md bttn-primary" href="/admin"><i class="fa fa-home fa-fw"></i></a>
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
                     <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
@@ -134,6 +134,13 @@
                                             </td>
 
                                         </tr>
+                                        <tr>
+                                            <td>NIC Number</td>
+                                            <td>
+                                                <h4 id="nic"></h4>
+                                            </td>
+
+                                        </tr>
                                     </table>
 
 
@@ -199,19 +206,22 @@
                 url: `/users/${token}`,
                 dataType: "json",
                 success: function (data) {
+                    if (data.role == "admin") {
+                        $("#admin_id").text(data.student_id);
+                        $("#name").text(data.name);
+                        $("#nic").text(data.nic);
+                        $("#phone_number").text(data.phone_number);
+                        $("#email").text(data.email);
 
-                    $("#admin_id").text(data.student_id);
-                    $("#name").text(data.name);
-                    $("#nic").text(data.nic);
-                    $("#phone_number").text(data.phone_number);
-                    $("#email").text(data.email);
-                    $("#technical_skills").text(data.technical_skills);
-
-                    console.log(data);
+                        console.log(data.nic);
+                    } else {
+                        window.location.replace("/");
+                    }
 
                 },
                 error: function () {
                     console.log("error from the method");
+                    window.location.replace("/");
                 }
             });
 

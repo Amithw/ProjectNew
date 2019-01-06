@@ -13,7 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- for button -->
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -33,164 +34,163 @@
 </head>
 
 
-<body> 
+<body>
     <div id="wrapper">
-        
-        <h1><img src="<%= user.thumbnail %>"/>
+
+        <h1><img src="<%= user.thumbnail %>" />
             <%= user.username %>
         </h1>
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-        </div>
-        <!-- /.navbar-header -->
+            </div>
+            <!-- /.navbar-header -->
 
-        <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right">
 
-            <a href="/google/student"><i class="fa fa-home fa-fw"></i> </a>
-            </li>
-
-            <li></li>
-            <li></li>
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
-                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><a href="/student_edit/<%= user.id %>" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
-                        Profile</a>
+                <a class="bttn-pill bttn-md bttn-primary" href="/google/student"><i class="fa fa-home fa-fw"></i></a>
                 </li>
 
-                <li class="divider"></li>
-                <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
-                        Log Out</button>
-                </li>
-            </ul>
-
-            <!-- /.dropdown-user -->
-
-            <!-- /.dropdown -->
-        </ul>
-        <!-- /.navbar-top-links -->
-
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
-                <ul class="nav" id="side-menu">
-
-                   
-                    <li><a href="/student/getOrganization"><i class="fa fa-building fa-fw"></i>All Organizations</a></li>
-                    <li><a href="/student_vacancy"><i class="fa fa-search fa-fw"></i>View Vacancies</a></li>
+                <li></li>
+                <li></li>
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="/student_edit/<%= user.id %>" class="btn btn-link"><i class="fa fa-user fa-fw"></i>
+                            Edit
+                            Profile</a>
                     </li>
 
-
-
+                    <li class="divider"></li>
+                    <li><button type="button" class="btn btn-link" id="logout" style="margin-left:25px"><i class="fa fa-sign-out fa-fw"></i>
+                            Log Out</button>
+                    </li>
                 </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
-    </div>
-   
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h-h1 id="name" class="page-header"></h-h1>
+                <!-- /.dropdown-user -->
+
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                    <ul class="nav" id="side-menu">
+
+
+                        <li><a class="bttn-pill bttn-md bttn-primary" href="/student/getOrganization"><i class="fa fa-building fa-fw"></i>All
+                                Organizations</a></li>
+                        <li><a class="bttn-pill bttn-md bttn-primary" href="/student_vacancy"><i class="fa fa-search fa-fw"></i>View
+                                Vacancies</a></li>
+                        </li>
+
+
+
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                View Vacancies
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+    </div>
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-6">
+                <h-h1 id="name" class="page-header"></h-h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>  View Vacancies</h3> 
+                        </div>
+                        <div class="panel-body">
+                            <div class="row1">
+                                <div class="col-lg-9">
+                                    <div class="scrol_bar">
+
+                                        <% practices.forEach(function (organization) { %>
+                                        <br>
+
+                                        <table>
+
+                                            <tr>
+
+                                                <td>
+                                                    <h3>
+                                                        <%= organization.name %>
+                                                    </h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Job Title</td>
+                                                <td>
+                                                    <h3><span class="label label-primary">
+                                                            <%= organization.job_title %></span></h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Number of Vacancy</td>
+                                                <td>
+                                                    <h3><span class="label label-primary">
+                                                            <%= organization.vacancy %></span></h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Closing Date</td>
+                                                <td>
+                                                    <h3><span class="label label-primary">
+                                                            <%= organization.closing_date %></span></h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone</td>
+                                                <td>
+                                                    <h3><span class="label label-primary">
+                                                            <%= organization.phone_number %></span></h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>E-Mail</td>
+                                                <td>
+                                                    <h3><span class="label label-primary">
+                                                            <%= organization.email %></span></h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Description</td>
+                                                <td>
+                                                    <h3><span class="label label-primary">
+                                                            <%= organization.description %></span></h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="bttn-pill bttn-md bttn-primary" href="https://<%= organization.web %>">View WebSite</a></td>
+                                                <td><a class="bttn-pill bttn-md bttn-primary" href="/student_send_cv/<%= organization.student_id %>">Apply</a></td>
+                                            </tr>
+
+                                        </table>
+                                        <% }) %>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="panel-body">
-                                <div class="row1">
-                                    <div class="col-lg-9">
-   
-
-    <% practices.forEach(function (organization) { %>
-    <br>
-
-   <table>
-
-    <tr>
-       
-        <td><h3> <%= organization.name %></h3></td>
-    </tr>   
-    <tr>
-        <td>Job Title</td>
-        <td><h3><span class="label label-primary"><%= organization.job_title %></span></h3></td>
-    </tr>  
-    <tr>
-        <td>Number of Vacancy</td>
-        <td><h3><span class="label label-primary"><%= organization.vacancy %></span></h3></td>
-    </tr>  
-    <tr>
-        <td>Closing Date</td>
-        <td><h3><span class="label label-primary"><%= organization.closing_date %></span></h3></td>
-    </tr>  
-    <tr>
-        <td>Phone</td>
-        <td><h3><span class="label label-primary"><%= organization.phone_number %></span></h3></td>
-    </tr>  
-    <tr>
-        <td>E-Mail</td>
-        <td><h3><span class="label label-primary"><%= organization.email %></span></h3></td>
-    </tr>  
-    <tr>
-        <td>Description</td>
-        <td><h3><span class="label label-primary"><%= organization.description %></span></h3></td>
-    </tr>  
-    <tr>
-        <td><a href="https://<%= organization.web %>">View WebSite</a></td>
-        <td><a href="/student_send_cv/<%= organization.student_id %>">Apply</a></td>
-    </tr>  
-    <!-- <% if(organization.name){  %>
-   <br>
-    <%  } %>
-    <% if(organization.job_title){  %>
-        
-        <%  } %><br>
-    <% if(organization.phone_number){  %>
-    
-    <%  } %><br>
-    <% if(organization.email){  %>
-    
-    <%  } %><br>
-    <% if(organization.vacancy){  %>
-    
-    <%  } %><br>
-    <% if(organization.closing_date){  %>
-    
-    <%  } %><br>
-    <% if(organization.description){  %>
-    
-    <%  } %><br>
-   
-    <% if(organization.web){  %>
-    
-    <%  } %><br> -->
-
-    
-    <!-- <a href="http://www.google.com">View WebSite</a> -->
-</table>
-    <% }) %>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
- <!-- /#wrapper -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -203,11 +203,11 @@
 
     <!-- Custom Theme JavaScript -->
     <!-- <script src="../dist/js/sb-admin-2.js"></script> -->
-       
+
     <script>  $("#logout").click(function () {
-        localStorage.clear("token");
-        window.location.replace("/");
-    });</script>
+            localStorage.clear("token");
+            window.location.replace("/");
+        });</script>
 </body>
 
 </html>

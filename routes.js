@@ -31,12 +31,12 @@ router.get("/admin/deleteOrganization/:id", adminController.deleteOrganization);
 
 //routes for user
 
-router.get("/users", appController.userAuthentication, userController.displayHome);
+// router.get("/users", appController.userAuthentication, userController.displayHome);
 router.post("/login", userController.authenticate);
-router.get("/users/getUsers", userController.getUsers);
-router.get("/users/edit", userController.edit);
+// router.get("/users/getUsers", userController.getUsers);
+// router.get("/users/edit", userController.edit);
 router.get("/users/:id", userController.getUser);
-router.put("/users/:id", userController.userUpdate);
+// router.put("/users/:id", userController.userUpdate);
 
 
 

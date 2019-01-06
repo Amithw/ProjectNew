@@ -35,7 +35,7 @@
 <body>
 
     <div id="wrapper">
-        <h1>WELCOME</h1>
+        <h1 id="name" class="page-header"></h1>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -50,21 +50,17 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <a id="cart" href="#"><i class="fa fa-folder fa-fw"></i>
-                    </a></li>
+                
+                    <a class="bttn-pill bttn-md bttn-primary" id="cart" href="#"><i class="fa fa-folder fa-fw"></i></a>
 
-                <li>
-                    <a id="view" href="#"><i class="fa fa-bell fa-fw"></i>
-                    </a>
-                <li>
-                    <a href="/organizations"><i class="fa fa-home fa-fw"></i> </a>
-                </li>
+             
+                    <a class="bttn-pill bttn-md bttn-primary" id="view" href="#"><i class="fa fa-bell fa-fw"></i></a>
+                
+                    <a class="bttn-pill bttn-md bttn-primary" href="/organizations"><i class="fa fa-home fa-fw"></i></a>
 
 
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i></a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="../organizations_edit" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Edit
                             Profile</a>
@@ -88,11 +84,11 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="../organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="../organizations_getUsers"><i class="fa fa-users"></i> All Students</a>
                         </li>
 
                         <li>
-                            <a href="../organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
+                            <a class="bttn-pill bttn-md bttn-primary" href="../organizations_addJobs"><i class="fa fa-edit fa-fw"></i> Add Jobs</a>
                         </li>
 
 
@@ -115,7 +111,7 @@
                 <div class="col-lg-9">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Short Listed Candidates
+                          <h3>  Short Listed Candidates</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row1">
@@ -169,7 +165,7 @@
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- Custom Theme JavaScript -->
     <!-- <script src="../dist/js/sb-admin-2.js"></script> -->
     <script>
@@ -189,7 +185,7 @@
                     // $("#photo").src(data.photo);
                     // ("#cv").text(data.cv);
                     $("#technical_skills").text(data.technical_skills);
-
+                    $("#name").text(data.name);
                     console.log(data);
                     id = data._id;
                     org_id = data.student_id;

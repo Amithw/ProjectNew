@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator/check');
 // function for displaying  home
 
 displayHome = function (req, res, next) {
+
     res.render("admin_home");
 }
 
@@ -71,10 +72,11 @@ userUpdate = function (req, res, next) {
     var id = req.params.id;
     var studentData = req.body;
 
-    console.log(req.params.id);
-    console.log(studentData.name);
-   
-        User.findOneAndUpdate({ _id: id }, studentData, { new: true }, function (err, user) {
+    // console.log(req.params.id);
+
+    console.log(studentData.email);
+
+    User.findOneAndUpdate({ _id: id }, studentData, { new: true }, function (err, user) {
         if (err) {
             res.status(400);
             res.send({ errors: "Error occured when updating the student." });
@@ -88,6 +90,8 @@ userUpdate = function (req, res, next) {
 
         }
     });
+
+
 }
 
 module.exports.userUpdate = userUpdate;
@@ -150,7 +154,7 @@ add_User = function (req, res, next) {
     console.log(req.body);
     console.log("add user");
 
-    var userData=req.body;
+    var userData = req.body;
     User.findOne({ student_id: userData.studenid }, function (err, user) {
         if (err) {
             res.status(500);
@@ -162,26 +166,24 @@ add_User = function (req, res, next) {
             res.send({ errors: "user is already exist." });
             return;
         }
-    var newUser = new User(req.body);
+        var newUser = new User(req.body);
 
-    console.log(newUser);
+        console.log(newUser);
 
-    newUser.save(function (err, user) {
- 
-        if (err) {
-            
-            res.status(401).send(err);
-            console.log(err);
-            console.log("err method");
-        } 
-       if (user) {
-            console.log("sucessfully");
-            res.status(200).send({ message: "user sucessfully created" });
-        }
-    });
+        newUser.save(function (err, user) {
 
+            if (err) {
 
-    
+                res.status(401).send(err);
+                console.log(err);
+                console.log("err method");
+            }
+            if (user) {
+                console.log("sucessfully");
+                res.status(200).send({ message: "user sucessfully created" });
+            }
+        });
     }
-    )}
+    )
+}
 module.exports.add_User = add_User;

@@ -1,3 +1,4 @@
+<!-- <% include _header_style_links %> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +11,7 @@
     <meta name="author" content="">
 
     <title>Admin</title>
-    <!-- for button -->
-    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
+
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,7 +23,7 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="../vendor/bootstrap/button/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,8 +34,6 @@
 </head>
 
 <body>
-
-
     <div id="wrapper">
         <h1 id="name" class="page-header"></h1>
         <!-- Navigation -->
@@ -54,8 +52,8 @@
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
 
-                <a href="/admin"><i class="fa fa-home fa-fw"></i></a>
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
+                <a class="bttn-pill bttn-md bttn-primary" href="/admin"><i class="fa fa-home fa-fw"></i></a>
+                <a class="bttn-pill bttn-md bttn-primary" class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: none">
                     <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
@@ -182,12 +180,16 @@
                 dataType: "json",
                 success: function (data) {
 
-                    $("#student_id").text(data.student_id);
-                    $("#name").text(data.name);
-                    $("#nic").text(data.nic);
-                    $("#phone_number").text(data.phone_number);
-                    $("#email").text(data.email);
-                    $("#technical_skills").text(data.technical_skills);
+                    if (data.role == "admin") {
+                        $("#admin_id").text(data.student_id);
+                        $("#name").text(data.name);
+                        $("#nic").text(data.nic);
+                        $("#phone_number").text(data.phone_number);
+                        $("#email").text(data.email);
+                    } else {
+                        window.location.replace("/");
+                    }
+
 
                     console.log(data);
 
@@ -252,7 +254,7 @@
                     }
 
                     document.getElementById('form').reset();
-                    //window.location.replace("/login");
+                    
                 }
 
             });
